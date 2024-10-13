@@ -4,11 +4,10 @@
   background-position: center; // Centra l'immagine
   height: 400px; // Imposta l'altezza del container
   display: flex; // Utilizza Flexbox per centrare il contenuto
-  justify-content: center; // Centra orizzontalmente
-  align-items: center; // Centra verticalmente
+  justify-content: start; // Centra orizzontalmente
+  align-items: end; // Centra verticalmente
   color: white; // Colore del testo, modificabile a piacere
-  text-align: center; // Allinea il testo al centro
-  padding: 20px; // Padding interno del container
+  padding: 1em 0; // Padding interno del container
 
   .content {
     background-color: rgba(
@@ -18,6 +17,7 @@
       0.5
     ); // Aggiungi uno sfondo semi-trasparente per migliorare la leggibilità
     padding: 20px; // Padding interno per il contenuto
-    border-radius: 10px; // Angoli arrotondati
+    border-radius: 0 10px 10px 0; // Angoli arrotondati
+    width: 60%;
   }
 }
