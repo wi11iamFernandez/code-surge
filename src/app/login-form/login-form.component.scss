@@ -1,0 +1,25 @@
+.login-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+
+  .login-card {
+    width: 25em;
+    padding: 1em;
+
+    mat-card-title {
+      margin: 1rem 0;
+    }
+
+    mat-form-field {
+      width: 100%;
+    }
+
+    .button-group {
+      display: flex;
+      justify-content: space-between;
+      margin-top: 20px;
+    }
+  }
+}
