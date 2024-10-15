@@ -12,11 +12,11 @@
           <input
             matInput
             placeholder="Enter your username"
-            formControlName="username"
+            formControlName="email"
             required
           />
           <mat-error
-            *ngIf="loginForm.controls['username'].hasError('required')"
+            
           >
             Username is required
           </mat-error>
@@ -42,7 +42,7 @@
             <mat-icon>{{ hide ? "visibility_off" : "visibility" }}</mat-icon>
           </button>
           <mat-error
-            *ngIf="loginForm.controls['password'].hasError('required')"
+            
           >
             Password is required
           </mat-error>
