@@ -5,6 +5,9 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatCardModule } from '@angular/material/card';
 import { MatIconModule } from '@angular/material/icon';
 import { HttpClient } from '@angular/common/http';
+import { MatSnackBar } from '@angular/material/snack-bar';
+import { Router } from '@angular/router';
+import { AuthService } from '../auth.service';
 
 @Component({
   selector: 'app-login-form',
@@ -25,7 +28,7 @@ export class LoginFormComponent {
   loginForm: FormGroup;
   hide = true;
 
-  constructor(private fb: FormBuilder, private http: HttpClient) {
+  constructor(private fb: FormBuilder, private http: HttpClient, private snackBar: MatSnackBar, private router: Router, private authService: AuthService) {
     this.loginForm = this.fb.group({
       email: ['', Validators.required],
       password: ['', Validators.required]
@@ -37,17 +40,34 @@ export class LoginFormComponent {
       const { email, password } = this.loginForm.value;
       this.http.post('http://localhost:9006/api/auth/authenticate', { email, password })
         .subscribe({
-          next: (response) => {
-            // Gestisci la risposta, ad esempio, memorizza il token o reindirizza
-            console.log('Login successful:', response);
-            
+          next: (response: any) => {
+            // Salva il token nel servizio
+            this.authService.setToken(response.token);
+            this.showSuccess(); // Mostra il messaggio di successo
+            this.router.navigate(['/']);
+
           },
           error: (error) => {
             console.error('Login failed:', error);
-            
+            this.showError();
+
           }
         });
     }
+  }
+
+  showSuccess() {
+    this.snackBar.open('Login riuscito!', 'Chiudi', {
+      duration: 3000,
+      panelClass: ['success-snackbar']
+    });
+  }
+
+  showError() {
+    this.snackBar.open('Login fallito! Controlla le tue credenziali.', 'Chiudi', {
+      duration: 3000,
+      panelClass: ['error-snackbar']
+    });
   }
 
 }
