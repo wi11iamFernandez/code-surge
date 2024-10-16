@@ -44,7 +44,7 @@ export class LoginFormComponent {
             // Salva il token nel servizio
             this.authService.setToken(response.token);
             this.showSuccess(); // Mostra il messaggio di successo
-            this.router.navigate(['/']);
+            this.router.navigate(['/deatil-viaggi']);
 
           },
           error: (error) => {
