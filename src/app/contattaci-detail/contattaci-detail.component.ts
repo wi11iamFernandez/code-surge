@@ -29,6 +29,7 @@ export class ContattaciDetailComponent {
   email: string = '';
   name: string = '';
   message: string = '';
+  telefono: string = '';
 
   submitForm() {
     // Gestisci la logica del form qui

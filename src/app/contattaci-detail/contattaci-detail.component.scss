@@ -5,10 +5,8 @@ body {
   background-color: #f5f7fa;
   color: #333;
   line-height: 1.6;
-  text-align: left;
 }
 
-/* Header */
 .header {
   background: url("https://static.voihotels.com/dam/jcr:3871a1d4-7c9c-44fe-b8fa-b58cbaaa5399/Copertina_racconti_madagascar_1280x200.jpg")
     no-repeat center center/cover;
@@ -16,7 +14,6 @@ body {
   padding: 80px 20px;
   text-align: center;
   position: relative;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
 }
 
 .header::before {
@@ -50,31 +47,11 @@ body {
 .contact-card {
   flex: 1;
   margin: 1em;
-  padding: 1em;
   min-width: 300px;
 
   mat-card-title {
     margin: 0.5em 1em;
   }
-}
-
-/* Allineamento a sinistra e rimozione punti elenco */
-ul {
-  list-style-type: none;
-  padding-left: 0;
-}
-
-ul li {
-  margin-bottom: 10px;
-}
-
-/* Allineamento del testo nei titoli e paragrafi */
-.contact-section p,
-.contact-section h1,
-.contact-section h2,
-.contact-section ul,
-.contact-section li {
-  text-align: left;
 }
 
 .contact-form {
@@ -95,4 +72,30 @@ footer {
   text-align: center;
   padding: 20px;
   margin-top: 40px;
+}
+
+ul {
+  list-style: none;
+  padding-left: 0;
+}
+
+ul li {
+  margin-bottom: 10px;
+}
+
+mat-card-title {
+  color: #4caf50;
+}
+
+button {
+  background-color: #4caf50;
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+button:hover {
+  background-color: #45a049;
 }

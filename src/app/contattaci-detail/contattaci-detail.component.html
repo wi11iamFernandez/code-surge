@@ -21,17 +21,59 @@
       </p>
     </mat-card-content>
   </mat-card>
-
   <img
     src="https://cdn.pixabay.com/photo/2014/04/02/11/16/phone-305741_1280.png"
     alt="Immagine di contatto"
   />
 </section>
 
+<!-- Emergenze di viaggio -->
+<section class="contact-section">
+  <mat-card class="contact-card">
+    <mat-card-title>Emergenze di Viaggio</mat-card-title>
+    <mat-card-content>
+      <p>
+        Se sei iscritto a un nostro viaggio e hai un'emergenza a meno di 72 ore
+        dalla partenza, contattaci immediatamente se riscontri uno dei seguenti
+        problemi:
+      </p>
+      <ul>
+        <li>Non riesci a partire per qualsiasi motivo</li>
+        <li>Non hai il biglietto aereo</li>
+        <li>I dati sul tuo biglietto aereo sono errati</li>
+        <li>Il tuo volo è stato cancellato o è in overbooking</li>
+        <li>Emergenze sanitarie</li>
+      </ul>
+    </mat-card-content>
+  </mat-card>
+  <img
+    src="https://cdn.pixabay.com/photo/2023/04/30/22/06/danger-7961706_1280.png"
+    alt="Immagine di emergenze"
+  />
+</section>
+
+<!-- Assistenza partecipanti -->
+<section class="contact-section">
+  <mat-card class="contact-card">
+    <mat-card-title>Assistenza per i Partecipanti</mat-card-title>
+    <mat-card-content>
+      <p>
+        Se mancano più di 72 ore alla partenza del tuo viaggio, contatta il tuo
+        coordinatore, che potrà interfacciarsi con noi se necessario.
+      </p>
+    </mat-card-content>
+  </mat-card>
+  <img
+    src="https://cdn.pixabay.com/photo/2017/05/03/22/08/book-2282303_1280.png"
+    alt="Immagine di assistenza"
+  />
+</section>
+
 <!-- Form di contatto -->
-<section>
+<!--
+<section class="contact-section">
   <mat-card class="contact-form">
-    <mat-card-title>Inviaci un messaggio</mat-card-title>
+    <mat-card-title>Contattaci</mat-card-title>
     <mat-card-content>
       <form (ngSubmit)="submitForm()">
         <mat-form-field appearance="outline" class="full-width">
@@ -51,6 +93,11 @@
         </mat-form-field>
 
         <mat-form-field appearance="outline" class="full-width">
+          <mat-label>Telefono (opzionale)</mat-label>
+          <input matInput [(ngModel)]="telefono" name="telefono" type="text" />
+        </mat-form-field>
+
+        <mat-form-field appearance="outline" class="full-width">
           <mat-label>Messaggio</mat-label>
           <textarea
             matInput
@@ -65,7 +112,13 @@
       </form>
     </mat-card-content>
   </mat-card>
+  <img
+    src="https://cdn.pixabay.com/photo/2014/04/03/00/30/paper-308510_1280.png"
+    alt="Immagine di contatto"
+  />
 </section>
+
+-->
 
 <!-- Footer -->
 <footer>
