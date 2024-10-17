@@ -2,24 +2,26 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 100vh;
+  min-height: 100vh;
+  background-color: #f0f0f0;
+}
 
-  .login-card {
-    width: 25em;
-    padding: 1em;
+.login-card {
+  max-width: 25em;
+  padding: 1em;
+  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.2);
 
-    mat-card-title {
-      margin: 1rem 0;
-    }
-
-    mat-form-field {
-      width: 100%;
-    }
-
-    .button-group {
-      display: flex;
-      justify-content: space-between;
-      margin-top: 20px;
-    }
+  mat-card-title {
+    margin: 1rem 0;
   }
+}
+
+.full-width {
+  width: 100%;
+}
+
+.button-group {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 16px;
 }

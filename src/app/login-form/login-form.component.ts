@@ -8,11 +8,13 @@ import { HttpClient } from '@angular/common/http';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { Router } from '@angular/router';
 import { AuthService } from '../auth.service';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-login-form',
   standalone: true,
   imports: [
+    CommonModule,
     ReactiveFormsModule,
     MatInputModule,
     MatButtonModule,
@@ -68,6 +70,10 @@ export class LoginFormComponent {
       duration: 3000,
       panelClass: ['error-snackbar']
     });
+  }
+
+  onRegister() {
+    this.router.navigate(['/register-form']);
   }
 
 }
