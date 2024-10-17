@@ -1,14 +1,21 @@
 <header>
   <div class="header-container">
     <div class="icon-container" [routerLink]="['/']" routerLinkActive="active">
-      <img src="/images/logo-mondo.png" alt="Logo" class="custom-icon" />
+      <img
+        src="/images/logo-mondo.png"
+        alt="Logo"
+        class="custom-icon"
+        (click)="toggleIconLogoMondo()"
+      />
     </div>
     <h1 class="header-title">Viaggia con noi</h1>
     <div class="icon-container">
       <mat-icon
+        *ngIf="showLoginIcon"
         class="login-icon"
         [routerLink]="['/login-component']"
         routerLinkActive="active"
+        (click)="toggleIconLogin()"
         >account_circle</mat-icon
       >
     </div>

@@ -1,1 +1,73 @@
-<p>contattaci-detail works!</p>
+<!-- Header -->
+<header class="header">
+  <h1>Contattaci</h1>
+  <p>Siamo qui per aiutarti con qualsiasi domanda sui nostri viaggi.</p>
+</header>
+
+<!-- Informazioni di contatto -->
+<section class="contact-section">
+  <mat-card class="contact-card">
+    <mat-card-title>Informazioni di Contatto</mat-card-title>
+    <mat-card-content>
+      <p>Puoi contattarci tramite i seguenti canali:</p>
+      <ul>
+        <li><strong>Email:</strong> info&#64;viaggiodasolo.com</li>
+        <li><strong>Telefono:</strong> +39 012 345 6789</li>
+        <li><strong>Indirizzo:</strong> Via Jacopo Durandi, 10, Torino</li>
+      </ul>
+      <p>
+        I nostri uffici sono aperti dal lunedì al venerdì, dalle 09:00 alle
+        18:00.
+      </p>
+    </mat-card-content>
+  </mat-card>
+
+  <img
+    src="https://cdn.pixabay.com/photo/2014/04/02/11/16/phone-305741_1280.png"
+    alt="Immagine di contatto"
+  />
+</section>
+
+<!-- Form di contatto -->
+<section>
+  <mat-card class="contact-form">
+    <mat-card-title>Inviaci un messaggio</mat-card-title>
+    <mat-card-content>
+      <form (ngSubmit)="submitForm()">
+        <mat-form-field appearance="outline" class="full-width">
+          <mat-label>Nome</mat-label>
+          <input matInput [(ngModel)]="name" name="name" required />
+        </mat-form-field>
+
+        <mat-form-field appearance="outline" class="full-width">
+          <mat-label>Email</mat-label>
+          <input
+            matInput
+            [(ngModel)]="email"
+            name="email"
+            type="email"
+            required
+          />
+        </mat-form-field>
+
+        <mat-form-field appearance="outline" class="full-width">
+          <mat-label>Messaggio</mat-label>
+          <textarea
+            matInput
+            [(ngModel)]="message"
+            name="message"
+            rows="4"
+            required
+          ></textarea>
+        </mat-form-field>
+
+        <button mat-raised-button color="primary" type="submit">Invia</button>
+      </form>
+    </mat-card-content>
+  </mat-card>
+</section>
+
+<!-- Footer -->
+<footer>
+  <p>&copy; 2024 Viaggio Da Solo. Tutti i diritti riservati.</p>
+</footer>

@@ -6,11 +6,15 @@ import { BehaviorSubject } from 'rxjs';
 })
 export class ToggleService {
 
-  // BehaviorSubject inizialmente impostato su false, indica che il componente è nascosto
+  // BehaviorSubject inizialmente impostato su pagina main-about-us, indica che solo quel componente è visibile
   private showPageDetail = new BehaviorSubject<string>('about-us');
+
+  // BehaviorSubject per gestire la visibilità dell'icona di login
+  private showLoginIcon = new BehaviorSubject<boolean>(true);
 
   // Observable pubblico che altri componenti possono sottoscrivere
   showDetailPage$ = this.showPageDetail.asObservable();
+  showLoginIcon$ = this.showLoginIcon.asObservable();
 
   constructor() { }
 
@@ -22,5 +26,15 @@ export class ToggleService {
   // Metodo per ottenere la parola chiave attuale (sincrono)
   getCurrentPage() {
     return this.showPageDetail.getValue();
+  }
+
+  // Metodo per cambiare la visibilità dell'icona di login
+  toggleShowLoginIcon(bVal: boolean) {
+    this.showLoginIcon.next(bVal); // Cambia lo stato di visibilità dell'icona di login
+  }
+
+  // Metodo per ottenere la visibilità attuale dell'icona di login (sincrono)
+  getVisibilityIconLogin() {
+    return this.showLoginIcon.getValue();
   }
 }

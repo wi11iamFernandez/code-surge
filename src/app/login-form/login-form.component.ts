@@ -11,6 +11,7 @@ import { AuthService } from '../services/auth.service';
 import { CommonModule } from '@angular/common';
 import { UserDataService } from '../services/user-data.service';
 import { ApiService } from '../services/api.service';
+import { HeaderGlobalAppComponent } from '../header-global-app/header-global-app.component';
 
 @Component({
   selector: 'app-login-form',
@@ -21,7 +22,8 @@ import { ApiService } from '../services/api.service';
     MatInputModule,
     MatButtonModule,
     MatCardModule,
-    MatIconModule
+    MatIconModule,
+    HeaderGlobalAppComponent
   ],
   templateUrl: './login-form.component.html',
   styleUrl: './login-form.component.scss'
