@@ -28,7 +28,7 @@ export class RegisterFormComponent {
   registerForm: FormGroup;
   hidePassword = true;
   hideRepeatPassword = true;
-  genders = ['Maschio', 'Femmina', 'Altro'];
+  genders = ['MASCHIO', 'FEMMINA', 'ALTRO'];
 
   constructor(
     private fb: FormBuilder,

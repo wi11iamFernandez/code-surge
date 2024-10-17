@@ -1,0 +1,21 @@
+.filter-form {
+  display: flex;
+  flex-wrap: wrap; /* Consente ai filtri di andare a capo */
+  gap: 16px; /* Spaziatura tra i filtri */
+  margin: 2em auto; /* Margine centrato */
+  justify-content: center;
+  width: 60em;
+  max-width: 80%;
+}
+
+mat-form-field {
+  flex: 1 1 22%; /* Imposta la larghezza dei filtri, 22% per 4 filtri per riga */
+  min-width: 150px; /* Imposta una larghezza minima per ogni filtro */
+}
+
+.apply-filters {
+  display: flex;
+  justify-content: flex-end; /* Posiziona il pulsante a destra */
+  margin-top: 16px; /* Margine sopra il pulsante */
+  width: 100%; /* Rende il pulsante pieno */
+}

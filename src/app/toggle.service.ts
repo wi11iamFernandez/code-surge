@@ -7,15 +7,20 @@ import { BehaviorSubject } from 'rxjs';
 export class ToggleService {
 
   // BehaviorSubject inizialmente impostato su false, indica che il componente è nascosto
-  private showAboutUsDetail = new BehaviorSubject<boolean>(true);
+  private showPageDetail = new BehaviorSubject<string>('about-us');
 
   // Observable pubblico che altri componenti possono sottoscrivere
-  showDetailAboutUs$ = this.showAboutUsDetail.asObservable();
+  showDetailPage$ = this.showPageDetail.asObservable();
 
   constructor() { }
 
-  // Metodo per cambiare lo stato di visibilità
-  toggleShowAboutUsDetail() {
-    this.showAboutUsDetail.next(true); // Cambia il valore attuale
+  // Metodo per cambiare la parola chiave della pagina attuale
+  toggleShowPageDetail(page: string) {
+    this.showPageDetail.next(page); // Cambia il valore attuale
+  }
+
+  // Metodo per ottenere la parola chiave attuale (sincrono)
+  getCurrentPage() {
+    return this.showPageDetail.getValue();
   }
 }

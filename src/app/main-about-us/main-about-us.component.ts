@@ -10,14 +10,14 @@ import { CommonModule } from '@angular/common';
   styleUrl: './main-about-us.component.scss'
 })
 export class MainAboutUsComponent implements OnInit {
-  isVisible: boolean = true; // Stato locale per la visibilità
+  currentPage: string = 'about-us'; // Stato locale per la visibilità
 
   constructor(private toggleService: ToggleService) { } // Inietta il servizio
 
   // Sottoscrizione all'Observable del servizio
   ngOnInit() {
-    this.toggleService.showDetailAboutUs$.subscribe(show => {
-      this.isVisible = show; // Aggiorna la visibilità ogni volta che cambia lo stato
+    this.toggleService.showDetailPage$.subscribe(show => {
+      this.currentPage = show; // Aggiorna la visibilità ogni volta che cambia lo stato
     });
   }
 }

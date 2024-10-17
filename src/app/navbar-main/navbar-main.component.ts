@@ -15,7 +15,15 @@ export class NavbarMainComponent {
   constructor(private toggleService: ToggleService) { }
 
   onToggleDescriptionAboutUs() {
-    this.toggleService.toggleShowAboutUsDetail(); // Chiama il metodo nel service per cambiare lo stato
+    this.toggleService.toggleShowPageDetail('about-us'); // Chiama il metodo nel service per cambiare lo stato
+  }
+
+  onToggleDescriptionViaggi() {
+    this.toggleService.toggleShowPageDetail('desc-viaggi');
+  }
+
+  onToggleDescriptionContattaci() {
+    this.toggleService.toggleShowPageDetail('desc-contattaci');
   }
 
 }

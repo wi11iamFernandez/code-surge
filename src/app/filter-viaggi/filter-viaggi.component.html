@@ -1,0 +1,73 @@
+<form [formGroup]="filterForm" class="filter-form">
+  <mat-form-field appearance="fill">
+    <mat-label>Nazione</mat-label>
+    <input
+      matInput
+      formControlName="nazione"
+      placeholder="Inserisci la nazione"
+    />
+  </mat-form-field>
+
+  <mat-form-field appearance="fill">
+    <mat-label>Area</mat-label>
+    <input matInput formControlName="area" placeholder="Inserisci l'area" />
+  </mat-form-field>
+
+  <mat-form-field appearance="fill">
+    <mat-label>Luogo di Partenza</mat-label>
+    <input
+      matInput
+      formControlName="luogo_partenza"
+      placeholder="Inserisci il luogo di partenza"
+    />
+  </mat-form-field>
+
+  <mat-form-field appearance="fill">
+    <mat-label>Luogo di Arrivo</mat-label>
+    <input
+      matInput
+      formControlName="luogo_arrivo"
+      placeholder="Inserisci il luogo di arrivo"
+    />
+  </mat-form-field>
+
+  <mat-form-field appearance="fill">
+    <mat-label>Data di Partenza</mat-label>
+    <input
+      matInput
+      [matDatepicker]="picker1"
+      formControlName="data_partenza"
+      placeholder="Scegli la data di partenza"
+    />
+    <mat-datepicker-toggle matSuffix [for]="picker1"></mat-datepicker-toggle>
+    <mat-datepicker #picker1></mat-datepicker>
+  </mat-form-field>
+
+  <mat-form-field appearance="fill">
+    <mat-label>Data di Arrivo</mat-label>
+    <input
+      matInput
+      [matDatepicker]="picker2"
+      formControlName="data_arrivo"
+      placeholder="Scegli la data di arrivo"
+    />
+    <mat-datepicker-toggle matSuffix [for]="picker2"></mat-datepicker-toggle>
+    <mat-datepicker #picker2></mat-datepicker>
+  </mat-form-field>
+
+  <mat-form-field appearance="fill">
+    <mat-label>Costo</mat-label>
+    <input
+      matInput
+      type="number"
+      formControlName="costo"
+      placeholder="Inserisci il costo"
+    />
+  </mat-form-field>
+
+  <div class="apply-filters">
+    <button mat-raised-button color="primary" (click)="applyFilters()">
+      Applica Filtri
+    </button>
+  </div>
+</form>

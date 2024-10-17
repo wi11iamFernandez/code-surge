@@ -8,32 +8,44 @@ header {
   padding: 1rem;
 
   .header-container {
-    display: flex; // Abilita il layout flex
-    justify-content: space-between; // Spaziatura tra gli elementi (titolo e icona)
-    align-items: center; // Allinea verticalmente al centro
-    width: 100%;
-  }
+    display: flex; // Layout a flexbox
+    align-items: center; // Allineamento verticale
+    justify-content: space-between; // Spaziatura tra gli elementi
 
-  h1 {
-    margin: 0;
-    text-align: center;
-    flex-grow: 1;
-    font-size: 2.5rem;
-  }
+    .icon-container {
+      display: flex; // Layout a flexbox per l'icona
+      align-items: center; // Allineamento verticale
+      position: relative; // Necessario per il posizionamento dell'animazione
 
-  .icon-container {
-    display: flex;
-    align-items: center;
-
-    .login-icon {
-      color: $bg-color-main;
-      cursor: pointer;
-      transition: color 0.3s ease;
-      transform: scale(1.8);
-
-      &:hover {
-        color: $bg-color-main; // Cambia il colore dell'icona al passaggio del mouse
+      .custom-icon {
+        width: 40px; // Larghezza dell'icona personalizzata
+        height: 40px; // Altezza dell'icona personalizzata
+        margin-left: 8px; // Spaziatura tra l'icona e il titolo
+        cursor: pointer;
+        transition: transform 0.3s ease; // Transizione per l'ingrandimento
       }
+
+      .login-icon {
+        font-size: 2.5em;
+        width: 1em; // Larghezza dell'icona personalizzata
+        height: 1em; // Altezza dell'icona personalizzata
+        margin-right: 8px; // Spaziatura tra l'icona e il titolo
+        cursor: pointer;
+        transition: transform 0.3s ease; // Transizione per l'ingrandimento
+      }
+
+      // Aggiungiamo l'effetto di ingrandimento
+      &:hover .custom-icon,
+      &:hover .login-icon {
+        transform: scale(1.8); // Ingrossa l'icona al passaggio del mouse
+      }
+    }
+
+    .header-title {
+      flex: 1; // Occupa lo spazio rimanente
+      text-align: center; // Centra il titolo
+      font-size: 2rem; // Dimensione del font
+      margin: 0; // Rimuove il margine di default
     }
   }
 }

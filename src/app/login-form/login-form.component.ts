@@ -7,8 +7,10 @@ import { MatIconModule } from '@angular/material/icon';
 import { HttpClient } from '@angular/common/http';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { Router } from '@angular/router';
-import { AuthService } from '../auth.service';
+import { AuthService } from '../services/auth.service';
 import { CommonModule } from '@angular/common';
+import { UserDataService } from '../services/user-data.service';
+import { ApiService } from '../services/api.service';
 
 @Component({
   selector: 'app-login-form',
@@ -30,7 +32,7 @@ export class LoginFormComponent {
   loginForm: FormGroup;
   hide = true;
 
-  constructor(private fb: FormBuilder, private http: HttpClient, private snackBar: MatSnackBar, private router: Router, private authService: AuthService) {
+  constructor(private fb: FormBuilder, private http: HttpClient, private snackBar: MatSnackBar, private router: Router, private authService: AuthService, private dataUser: UserDataService, private apiService: ApiService) {
     this.loginForm = this.fb.group({
       email: ['', Validators.required],
       password: ['', Validators.required]
@@ -40,15 +42,15 @@ export class LoginFormComponent {
   onSubmit() {
     if (this.loginForm.valid) {
       const { email, password } = this.loginForm.value;
-      this.http.post('http://localhost:9006/api/auth/authenticate', { email, password })
+      this.apiService.authenticateUser({ email, password })
         .subscribe({
           next: (response: any) => {
             // Salva il token nel servizio
             this.authService.setToken(response.token);
-            this.showSuccess(); // Mostra il messaggio di successo
-            this.router.navigate(['/deatil-viaggi']);
 
+            this.getUtenteAuth();
           },
+
           error: (error) => {
             console.error('Login failed:', error);
             this.showError();
@@ -56,6 +58,27 @@ export class LoginFormComponent {
           }
         });
     }
+  }
+
+  getUtenteAuth() {
+    const sToken = this.authService.getToken() || '';
+    this.apiService.getUserInfo(sToken)
+      .subscribe({
+        next: (response: any) => {
+          this.showSuccess(); // Mostra il messaggio di successo
+
+          // Salva l'utente nel servizio
+          this.dataUser.updateUser(response);
+
+          this.router.navigate(['/deatil-viaggi']);
+        },
+
+        error: (error) => {
+          console.error('Login failed:', error);
+          this.showError();
+
+        }
+      });
   }
 
   showSuccess() {

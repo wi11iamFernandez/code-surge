@@ -1,10 +1,10 @@
 import { Component } from '@angular/core';
-import { HeaderGlobalAppComponent } from '../header-global-app/header-global-app.component';
+import { FilterViaggiComponent } from '../filter-viaggi/filter-viaggi.component';
 
 @Component({
   selector: 'app-detail-viaggi',
   standalone: true,
-  imports: [HeaderGlobalAppComponent],
+  imports: [FilterViaggiComponent],
   templateUrl: './detail-viaggi.component.html',
   styleUrl: './detail-viaggi.component.scss'
 })
