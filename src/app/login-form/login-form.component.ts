@@ -13,6 +13,7 @@ import { UserDataService } from '../services/user-data.service';
 import { ApiService } from '../services/api.service';
 import { HeaderGlobalAppComponent } from '../header-global-app/header-global-app.component';
 import { ToggleService } from '../toggle.service';
+import { FooterComponent } from '../footer/footer.component';
 
 @Component({
   selector: 'app-login-form',
@@ -24,7 +25,8 @@ import { ToggleService } from '../toggle.service';
     MatButtonModule,
     MatCardModule,
     MatIconModule,
-    HeaderGlobalAppComponent
+    HeaderGlobalAppComponent,
+    FooterComponent
   ],
   templateUrl: './login-form.component.html',
   styleUrl: './login-form.component.scss'

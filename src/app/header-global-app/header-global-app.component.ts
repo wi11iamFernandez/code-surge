@@ -1,9 +1,11 @@
 import { Component } from '@angular/core';
 import { MatIconModule } from '@angular/material/icon';
-import { RouterLink, RouterLinkActive } from '@angular/router';
+import { Router, RouterLink, RouterLinkActive } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { ToggleService } from '../toggle.service';
 import { AuthService } from '../services/auth.service';
+import { ApiService } from '../services/api.service';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 
 @Component({
@@ -18,7 +20,7 @@ export class HeaderGlobalAppComponent {
   showLoginIcon: boolean = false;
   showLogoutIcon: boolean = false;
 
-  constructor(private toggleService: ToggleService, private authService: AuthService) { }
+  constructor(private toggleService: ToggleService, private authService: AuthService, private apiService: ApiService, private router: Router, private snackBar: MatSnackBar) { }
 
   ngOnInit(): void {
     this.toggleService.showLoginIcon$.subscribe(
@@ -48,7 +50,27 @@ export class HeaderGlobalAppComponent {
   }
 
   logout() {
-    //this.authService.logout();  // Logout effettivo
+    const sToken = this.authService.getToken() || '';
+    this.apiService.logout(sToken)
+      .subscribe({
+        next: (response: any) => {
+          this.showSuccess(); // Mostra il messaggio di successo
+
+          // Salva l'utente nel servizio
+          //this.dataUser.updateUser(response);
+
+          this.router.navigate(['/home-detail']);
+          this.toggleService.toggleShowPageDetail('about-us');
+          this.toggleService.toggleShowLoginIcon(true);
+          this.toggleService.toggleShowLogoutIcon(false);
+        },
+
+        error: (error) => {
+          console.error('Login failed:', error);
+          this.showError();
+
+        }
+      });
     this.showLoginIcon = true;
     this.showLogoutIcon = false;
     this.toggleService.toggleShowLoginIcon(true);
@@ -60,6 +82,20 @@ export class HeaderGlobalAppComponent {
     const token = this.authService.getToken();  // Ottieni il token
     this.showLogoutIcon = !!token;  // Se c'è un token, mostriamo l'icona di logout
     this.showLoginIcon = !this.showLogoutIcon;  // Se logout è visibile, login è nascosto e viceversa
+  }
+
+  showSuccess() {
+    this.snackBar.open('Logout effettuato!', 'Chiudi', {
+      duration: 3000,
+      panelClass: ['success-snackbar']
+    });
+  }
+
+  showError() {
+    this.snackBar.open('Login fallito! Controlla le tue credenziali.', 'Chiudi', {
+      duration: 3000,
+      panelClass: ['error-snackbar']
+    });
   }
 
 }

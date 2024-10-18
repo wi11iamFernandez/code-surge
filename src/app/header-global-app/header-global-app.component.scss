@@ -25,7 +25,8 @@ header {
         transition: transform 0.3s ease; // Transizione per l'ingrandimento
       }
 
-      .login-icon {
+      .login-icon,
+      .logout-icon {
         font-size: 2.5em;
         width: 1em; // Larghezza dell'icona personalizzata
         height: 1em; // Altezza dell'icona personalizzata
@@ -36,7 +37,8 @@ header {
 
       // Aggiungiamo l'effetto di ingrandimento
       &:hover .custom-icon,
-      &:hover .login-icon {
+      &:hover .login-icon,
+      &:hover .logout-icon {
         transform: scale(1.8); // Ingrossa l'icona al passaggio del mouse
       }
     }

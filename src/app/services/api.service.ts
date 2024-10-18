@@ -44,4 +44,9 @@ export class ApiService {
     return this.http.get(`${this.baseUrl}/api/viaggio/filter`, { params });
   }
 
+  logout(tokenData: string): Observable<any> {
+    const headers = new HttpHeaders().set('Authorization', `Bearer ${tokenData}`);
+    return this.http.post(`${this.baseUrl}/api/auth/logout`, {}, { headers });
+  }
+
 }
