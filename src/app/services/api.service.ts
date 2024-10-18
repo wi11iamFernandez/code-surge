@@ -1,4 +1,4 @@
-import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 
@@ -27,4 +27,21 @@ export class ApiService {
     const headers = new HttpHeaders().set('Authorization', `Bearer ${tokenData}`);
     return this.http.get(`${this.baseUrl}/api/utente/me`, { headers });
   }
+
+  getViaggi(): Observable<any> {
+    return this.http.get(`${this.baseUrl}/api/viaggio/all`);
+  }
+
+  getViaggiFilter(filterData: any): Observable<any> {
+    let params = new HttpParams();
+
+    // Aggiungi i parametri di filtro solo se sono presenti
+    for (const key in filterData) {
+      if (filterData[key]) {
+        params = params.append(key, filterData[key]);
+      }
+    }
+    return this.http.get(`${this.baseUrl}/api/viaggio/filter`, { params });
+  }
+
 }

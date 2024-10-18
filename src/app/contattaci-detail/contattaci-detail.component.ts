@@ -7,6 +7,7 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatIconModule } from '@angular/material/icon';
 import { MatInputModule } from '@angular/material/input';
 import { MatToolbarModule } from '@angular/material/toolbar';
+import { FooterComponent } from '../footer/footer.component';
 
 @Component({
   selector: 'app-contattaci-detail',
@@ -19,7 +20,8 @@ import { MatToolbarModule } from '@angular/material/toolbar';
     MatToolbarModule,
     MatInputModule,
     MatFormFieldModule,
-    FormsModule
+    FormsModule,
+    FooterComponent
   ],
   templateUrl: './contattaci-detail.component.html',
   styleUrl: './contattaci-detail.component.scss'

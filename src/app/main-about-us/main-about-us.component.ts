@@ -1,11 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 import { ToggleService } from '../toggle.service';
 import { CommonModule } from '@angular/common';
+import { FooterComponent } from '../footer/footer.component';
 
 @Component({
   selector: 'app-main-about-us',
   standalone: true,
-  imports: [CommonModule],
+  imports: [CommonModule, FooterComponent],
   templateUrl: './main-about-us.component.html',
   styleUrl: './main-about-us.component.scss'
 })

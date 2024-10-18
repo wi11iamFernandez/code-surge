@@ -1,0 +1,79 @@
+$bg-color-main: #4c95ae;
+
+.viaggi-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  padding: 20px;
+
+  .viaggio-card {
+    width: 100%;
+    max-width: 80%; /* Limite massimo della larghezza */
+    background-color: #f9f9f9;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+    margin: 1em;
+    display: flex;
+    flex-direction: column;
+
+    mat-card-title {
+      font-size: 1.4rem;
+      color: $bg-color-main;
+    }
+
+    mat-card-subtitle {
+      font-size: 1.1rem;
+      color: #999;
+    }
+
+    mat-card-content {
+      .viaggio-dettagli {
+        display: flex;
+        gap: 20px; /* Distanza tra "Partenza" e "Arrivo" */
+        margin-bottom: 15px;
+
+        p {
+          margin: 0;
+          font-size: 1rem;
+          color: #555;
+
+          strong {
+            color: #333;
+          }
+        }
+      }
+    }
+
+    mat-card-actions {
+      display: flex;
+      justify-content: flex-end;
+      align-items: center; /* Pulsante centrato verticalmente */
+      position: relative;
+      min-height: 0;
+      padding: 0;
+
+      button {
+        font-size: 0.9rem;
+        right: 2em;
+        bottom: 4em;
+      }
+    }
+  }
+}
+
+/* Media queries per schermi piccoli */
+@media (max-width: 768px) {
+  .viaggi-container {
+    flex-direction: column;
+    align-items: center;
+
+    .viaggio-card {
+      width: 90%;
+    }
+
+    .viaggio-dettagli {
+      flex-direction: column;
+      align-items: flex-start; /* Partenza e arrivo uno sotto l'altro */
+    }
+  }
+}

@@ -7,11 +7,12 @@ import { CommonModule } from '@angular/common';
 import { RouterLink, RouterLinkActive, RouterOutlet } from '@angular/router';
 import { DetailViaggiComponent } from '../detail-viaggi/detail-viaggi.component';
 import { ContattaciDetailComponent } from '../contattaci-detail/contattaci-detail.component';
+import { FooterComponent } from '../footer/footer.component';
 
 @Component({
   selector: 'app-home-page',
   standalone: true,
-  imports: [HeaderGlobalAppComponent, NavbarMainComponent, MainAboutUsComponent, CommonModule, RouterLink, RouterLinkActive, RouterOutlet, DetailViaggiComponent, ContattaciDetailComponent],
+  imports: [HeaderGlobalAppComponent, NavbarMainComponent, MainAboutUsComponent, CommonModule, RouterLink, RouterLinkActive, RouterOutlet, DetailViaggiComponent, ContattaciDetailComponent, FooterComponent],
   templateUrl: './home-page.component.html',
   styleUrl: './home-page.component.scss'
 })

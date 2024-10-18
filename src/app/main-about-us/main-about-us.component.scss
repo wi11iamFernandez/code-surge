@@ -1,11 +1,11 @@
-.background-container {
+.background-container-first {
   background-image: url("/images/bg-viaggiatori.jpg"); // Sostituisci con il percorso della tua immagine
   background-size: cover; // Copre l'intero container
   background-position: center; // Centra l'immagine
   height: 400px; // Imposta l'altezza del container
   display: flex; // Utilizza Flexbox per centrare il contenuto
-  justify-content: start; // Centra orizzontalmente
-  align-items: end; // Centra verticalmente
+  justify-content: left; // Centra orizzontalmente
+  align-items: center; // Centra verticalmente
   color: white; // Colore del testo, modificabile a piacere
   padding: 1em 0; // Padding interno del container
 
@@ -19,5 +19,34 @@
     padding: 20px; // Padding interno per il contenuto
     border-radius: 0 10px 10px 0; // Angoli arrotondati
     width: 60%;
+  }
+}
+
+.background-container-second {
+  background-image: url("/images/tour_gastronomico.jpg"); // Sostituisci con il percorso della tua immagine
+  background-size: cover; // Copre l'intero container
+  background-position: center; // Centra l'immagine
+  height: 400px; // Imposta l'altezza del container
+  display: flex; // Utilizza Flexbox per centrare il contenuto
+  justify-content: end; // Centra orizzontalmente
+  align-items: end; // Centra verticalmente
+  color: #f3ff6d; // Colore del testo, modificabile a piacere
+  padding: 1em 0; // Padding interno del container
+
+  .content {
+    background-color: rgba(
+      0,
+      0,
+      0,
+      0.5
+    ); // Aggiungi uno sfondo semi-trasparente per migliorare la leggibilità
+    padding: 20px; // Padding interno per il contenuto
+    border-radius: 0 10px 10px 0; // Angoli arrotondati
+    width: 60%;
+
+    // Allinea il testo a destra
+    .text-right {
+      text-align: right; // Allineamento del testo a destra
+    }
   }
 }

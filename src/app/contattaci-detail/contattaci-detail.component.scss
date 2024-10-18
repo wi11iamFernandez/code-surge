@@ -8,8 +8,7 @@ body {
 }
 
 .header {
-  background: url("https://static.voihotels.com/dam/jcr:3871a1d4-7c9c-44fe-b8fa-b58cbaaa5399/Copertina_racconti_madagascar_1280x200.jpg")
-    no-repeat center center/cover;
+  background: url("/images/madagascar.jpg") no-repeat center center/cover;
   color: white;
   padding: 80px 20px;
   text-align: center;
@@ -64,14 +63,6 @@ img {
   height: auto;
   border-radius: 8px;
   margin-left: 20px;
-}
-
-footer {
-  background-color: #333;
-  color: white;
-  text-align: center;
-  padding: 20px;
-  margin-top: 40px;
 }
 
 ul {
