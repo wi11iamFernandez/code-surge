@@ -12,9 +12,13 @@ export class ToggleService {
   // BehaviorSubject per gestire la visibilità dell'icona di login
   private showLoginIcon = new BehaviorSubject<boolean>(true);
 
+  // BehaviorSubject per gestire la visibilità dell'icona di logout
+  private showLogoutIcon = new BehaviorSubject<boolean>(false);
+
   // Observable pubblico che altri componenti possono sottoscrivere
   showDetailPage$ = this.showPageDetail.asObservable();
   showLoginIcon$ = this.showLoginIcon.asObservable();
+  showLogoutIcon$ = this.showLogoutIcon.asObservable();
 
   constructor() { }
 
@@ -37,4 +41,15 @@ export class ToggleService {
   getVisibilityIconLogin() {
     return this.showLoginIcon.getValue();
   }
+
+  // Metodo per cambiare la visibilità dell'icona di login
+  toggleShowLogoutIcon(bVal: boolean) {
+    this.showLogoutIcon.next(bVal); // Cambia lo stato di visibilità dell'icona di login
+  }
+
+  // Metodo per ottenere la visibilità attuale dell'icona di login (sincrono)
+  getVisibilityIconLogout() {
+    return this.showLogoutIcon.getValue();
+  }
+
 }

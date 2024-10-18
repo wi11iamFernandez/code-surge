@@ -1,4 +1,4 @@
-import { CommonModule } from '@angular/common';
+import { CommonModule, DatePipe } from '@angular/common';
 import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, ReactiveFormsModule } from '@angular/forms';
 import { MatButtonModule } from '@angular/material/button';
@@ -19,6 +19,7 @@ import { ViaggiService } from '../services/viaggi.service';
 export class FilterViaggiComponent {
 
   filterForm: FormGroup;
+  datePipe = new DatePipe("en-US");
 
   constructor(private fb: FormBuilder, private apiService: ApiService, private viaggiService: ViaggiService) {
     this.filterForm = this.fb.group({
@@ -34,6 +35,11 @@ export class FilterViaggiComponent {
 
   applyFilters() {
     const filters = this.filterForm.value;
+
+    // Formattiamo la data di partenza e di arrivo nel formato "yyyy-MM-dd"
+    filters.data_partenza = this.datePipe.transform(filters.data_partenza, 'yyyy-MM-dd');
+    filters.data_arrivo = this.datePipe.transform(filters.data_arrivo, 'yyyy-MM-dd');
+
     this.apiService.getViaggiFilter(filters).subscribe({
       next: (data) => {
         this.viaggiService.setViaggi(data);

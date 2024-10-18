@@ -12,5 +12,13 @@
   routerLink="contattaci-detail"
   *ngIf="currentPage === 'desc-contattaci'"
 ></app-contattaci-detail>
+<app-crea-viaggio
+  routerLink="crea-viaggio-detail"
+  *ngIf="currentPage === 'desc-crea-viaggio'"
+></app-crea-viaggio>
+<app-viaggi-utente
+  routerLink="viaggi-utente-detail"
+  *ngIf="currentPage === 'desc-viaggi-utente'"
+></app-viaggi-utente>
 
 <router-outlet></router-outlet>

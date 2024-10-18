@@ -8,11 +8,13 @@ import { RouterLink, RouterLinkActive, RouterOutlet } from '@angular/router';
 import { DetailViaggiComponent } from '../detail-viaggi/detail-viaggi.component';
 import { ContattaciDetailComponent } from '../contattaci-detail/contattaci-detail.component';
 import { FooterComponent } from '../footer/footer.component';
+import { CreaViaggioComponent } from '../crea-viaggio/crea-viaggio.component';
+import { ViaggiUtenteComponent } from '../viaggi-utente/viaggi-utente.component';
 
 @Component({
   selector: 'app-home-page',
   standalone: true,
-  imports: [HeaderGlobalAppComponent, NavbarMainComponent, MainAboutUsComponent, CommonModule, RouterLink, RouterLinkActive, RouterOutlet, DetailViaggiComponent, ContattaciDetailComponent, FooterComponent],
+  imports: [HeaderGlobalAppComponent, NavbarMainComponent, MainAboutUsComponent, CommonModule, RouterLink, RouterLinkActive, RouterOutlet, DetailViaggiComponent, ContattaciDetailComponent, FooterComponent, CreaViaggioComponent, ViaggiUtenteComponent],
   templateUrl: './home-page.component.html',
   styleUrl: './home-page.component.scss'
 })

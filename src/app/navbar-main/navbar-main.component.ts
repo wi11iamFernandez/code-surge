@@ -26,4 +26,12 @@ export class NavbarMainComponent {
     this.toggleService.toggleShowPageDetail('desc-contattaci');
   }
 
+  onToggleDescriptionCreaViaggio() {
+    this.toggleService.toggleShowPageDetail('desc-crea-viaggio');
+  }
+
+  onToggleDescriptionViaggiPersonali() {
+    this.toggleService.toggleShowPageDetail('desc-viaggi-utente');
+  }
+
 }

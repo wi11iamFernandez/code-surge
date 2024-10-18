@@ -12,6 +12,7 @@ import { CommonModule } from '@angular/common';
 import { UserDataService } from '../services/user-data.service';
 import { ApiService } from '../services/api.service';
 import { HeaderGlobalAppComponent } from '../header-global-app/header-global-app.component';
+import { ToggleService } from '../toggle.service';
 
 @Component({
   selector: 'app-login-form',
@@ -34,7 +35,7 @@ export class LoginFormComponent {
   loginForm: FormGroup;
   hide = true;
 
-  constructor(private fb: FormBuilder, private http: HttpClient, private snackBar: MatSnackBar, private router: Router, private authService: AuthService, private dataUser: UserDataService, private apiService: ApiService) {
+  constructor(private fb: FormBuilder, private http: HttpClient, private snackBar: MatSnackBar, private router: Router, private authService: AuthService, private dataUser: UserDataService, private apiService: ApiService, private toggleService: ToggleService) {
     this.loginForm = this.fb.group({
       email: ['', Validators.required],
       password: ['', Validators.required]
@@ -72,7 +73,10 @@ export class LoginFormComponent {
           // Salva l'utente nel servizio
           this.dataUser.updateUser(response);
 
-          this.router.navigate(['/deatil-viaggi']);
+          this.router.navigate(['/home-detail']);
+          this.toggleService.toggleShowPageDetail('desc-crea-viaggio');
+          this.toggleService.toggleShowLoginIcon(false);
+          this.toggleService.toggleShowLogoutIcon(true);
         },
 
         error: (error) => {
