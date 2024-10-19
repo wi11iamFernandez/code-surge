@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { MatIconModule } from '@angular/material/icon';
 import { Router, RouterLink, RouterLinkActive } from '@angular/router';
 import { CommonModule } from '@angular/common';
-import { ToggleService } from '../toggle.service';
+import { ToggleService } from '../services/toggle.service';
 import { AuthService } from '../services/auth.service';
 import { ApiService } from '../services/api.service';
 import { MatSnackBar } from '@angular/material/snack-bar';
@@ -54,15 +54,16 @@ export class HeaderGlobalAppComponent {
     this.apiService.logout(sToken)
       .subscribe({
         next: (response: any) => {
-          this.showSuccess(); // Mostra il messaggio di successo
-
-          // Salva l'utente nel servizio
+          this.authService.clearToken();
+          // Pulisci data del utente
           //this.dataUser.updateUser(response);
 
           this.router.navigate(['/home-detail']);
           this.toggleService.toggleShowPageDetail('about-us');
           this.toggleService.toggleShowLoginIcon(true);
           this.toggleService.toggleShowLogoutIcon(false);
+
+          this.showSuccess(); // Mostra il messaggio di successo
         },
 
         error: (error) => {

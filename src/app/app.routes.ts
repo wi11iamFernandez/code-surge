@@ -12,13 +12,7 @@ import { ViaggiUtenteComponent } from './viaggi-utente/viaggi-utente.component';
 export const routes: Routes = [
     { path: '', component: HomePageComponent },       // Route per la homepage
     {
-        path: 'home-detail', component: HomePageComponent, children: [
-            { path: 'about-us-detail', component: MainAboutUsComponent },
-            { path: 'viaggi-detail', component: DetailViaggiComponent },
-            { path: 'contattaci-detail', component: ContattaciDetailComponent },
-            { path: 'crea-viaggio-detail', component: CreaViaggioComponent },
-            { path: 'viaggi-utente-detail', component: ViaggiUtenteComponent }
-        ]
+        path: 'home-detail', component: HomePageComponent
     },
     { path: 'login-component', component: LoginFormComponent },
     { path: 'deatil-viaggi', component: DetailViaggiComponent },

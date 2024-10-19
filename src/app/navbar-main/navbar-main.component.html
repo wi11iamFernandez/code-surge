@@ -1,13 +1,31 @@
 <mat-toolbar color="primary">
-  <button mat-button (click)="onToggleDescriptionAboutUs()">CHI SIAMO</button>
-  <button mat-button (click)="onToggleDescriptionViaggi()">I VIAGGI</button>
-  <button mat-button (click)="onToggleDescriptionContattaci()">
+  <button
+    mat-button
+    [ngClass]="{ 'active-button': selectedButton === 'about-us' }"
+    (click)="onToggleDescription('about-us')"
+  >
+    CHI SIAMO
+  </button>
+  <button
+    mat-button
+    [ngClass]="{ 'active-button': selectedButton === 'desc-viaggi' }"
+    (click)="onToggleDescription('desc-viaggi')"
+  >
+    I VIAGGI
+  </button>
+  <button
+    mat-button
+    [ngClass]="{ 'active-button': selectedButton === 'desc-contattaci' }"
+    (click)="onToggleDescription('desc-contattaci')"
+  >
     CONTATTACI
   </button>
-  <button mat-button (click)="onToggleDescriptionCreaViaggio()">
-    CREA IL TUO VIAGGIO
-  </button>
-  <button mat-button (click)="onToggleDescriptionViaggiPersonali()">
-    I TUOI VIAGGI
+  <button
+    *ngIf="getVisibilityAreaPersonal()"
+    mat-button
+    [ngClass]="{ 'active-button': selectedButton === 'desc-area-personale' }"
+    (click)="onToggleDescription('desc-area-personale')"
+  >
+    AREA PERSONALE
   </button>
 </mat-toolbar>

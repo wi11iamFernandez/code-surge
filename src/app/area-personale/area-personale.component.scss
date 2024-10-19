@@ -1,0 +1,12 @@
+.container-fluid {
+  background-image: url("/images/sfondo-area-personale.jpg"); // Sostituisci con il percorso della tua immagine
+  background-size: cover; // Copre l'intero container
+  background-position: center; // Centra l'immagine
+  padding: 0; // Padding interno del container
+
+  .container-area-personale {
+    height: 80vh; // Imposta l'altezza del container
+    display: flex; // Utilizza Flexbox per centrare il contenuto
+    padding: 1em 0; // Padding interno del container
+  }
+}

@@ -1,19 +1,52 @@
-.register-card {
-  max-width: 500px;
-  margin: 2rem auto;
-  padding: 2rem;
+.main-contenitore {
+  background: linear-gradient(#eddece, #02202d);
 
-  h2 {
-    text-align: center;
-    margin-bottom: 1.5rem;
+  .register-card {
+    background-image: url("/images/boke-register.jpg"); // Sostituisci con il percorso della tua immagine
+    background-size: cover; // Copre l'intero container
+    background-position: center; // Centra l'immagine
+
+    .group-inputs {
+      padding: 0 3em;
+      mat-form-field {
+        width: 100%;
+      }
+    }
+
+    .invia-dati {
+      display: flex;
+      justify-content: center;
+
+      button {
+        width: 15%;
+        margin-bottom: 2em;
+        color: #09a58e;
+      }
+    }
   }
 
-  mat-form-field {
-    width: 100%;
-    margin-bottom: 1.2rem;
+  // Schermi piccoli (cellulari - <576px)
+  @media (max-width: 576px) {
+    height: auto;
   }
 
-  button {
-    width: 100%;
+  // Schermi medi (tablet - 576px a 768px)
+  @media (min-width: 576px) and (max-width: 768px) {
+    height: auto;
+  }
+
+  // Schermi grandi (laptop - 768px a 992px)
+  @media (min-width: 768px) and (max-width: 992px) {
+    height: auto;
+  }
+
+  // Schermi molto grandi (desktop - 992px a 1200px)
+  @media (min-width: 992px) and (max-width: 1200px) {
+    height: 100vh;
+  }
+
+  // Schermi extra grandi (monitor grandi - >1200px)
+  @media (min-width: 1200px) {
+    height: 100vh;
   }
 }

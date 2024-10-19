@@ -1,24 +1,19 @@
-<app-header-global-app></app-header-global-app>
-<app-navbar-main></app-navbar-main>
-<app-main-about-us
-  routerLink="about-us-detail"
-  *ngIf="currentPage === 'about-us'"
-></app-main-about-us>
-<app-detail-viaggi
-  routerLink="app-detail-viaggi"
-  *ngIf="currentPage === 'desc-viaggi'"
-></app-detail-viaggi>
-<app-contattaci-detail
-  routerLink="contattaci-detail"
-  *ngIf="currentPage === 'desc-contattaci'"
-></app-contattaci-detail>
-<app-crea-viaggio
-  routerLink="crea-viaggio-detail"
-  *ngIf="currentPage === 'desc-crea-viaggio'"
-></app-crea-viaggio>
-<app-viaggi-utente
-  routerLink="viaggi-utente-detail"
-  *ngIf="currentPage === 'desc-viaggi-utente'"
-></app-viaggi-utente>
+<div class="container">
+  <mat-grid-list cols="1" rowHeight="1:1">
+    <app-header-global-app></app-header-global-app>
+    <app-navbar-main></app-navbar-main>
+    <app-main-about-us *ngIf="currentPage === 'about-us'"></app-main-about-us>
+    <app-detail-viaggi
+      *ngIf="currentPage === 'desc-viaggi'"
+    ></app-detail-viaggi>
+    <app-contattaci-detail
+      *ngIf="currentPage === 'desc-contattaci'"
+    ></app-contattaci-detail>
+    <app-area-personale
+      *ngIf="currentPage === 'desc-area-personale'"
+    ></app-area-personale>
+  </mat-grid-list>
+</div>
+<app-loading-spinner></app-loading-spinner>
 
 <router-outlet></router-outlet>

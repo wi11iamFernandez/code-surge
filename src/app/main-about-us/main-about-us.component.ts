@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ToggleService } from '../toggle.service';
+import { ToggleService } from '../services/toggle.service';
 import { CommonModule } from '@angular/common';
 import { FooterComponent } from '../footer/footer.component';
 

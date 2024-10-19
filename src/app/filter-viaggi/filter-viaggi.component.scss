@@ -1,3 +1,9 @@
+.main-contenitore {
+  background-image: url("/images/madagascar.jpg"); // Sostituisci con il percorso della tua immagine
+  background-size: cover; // Copre l'intero container
+  background-position: center; // Centra l'immagine
+}
+
 .filter-form {
   display: flex;
   flex-wrap: wrap; /* Consente ai filtri di andare a capo */

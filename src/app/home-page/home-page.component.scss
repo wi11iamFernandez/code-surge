@@ -1,0 +1,35 @@
+.container {
+  display: block;
+  padding-right: 2rem;
+  padding-left: 2rem;
+  margin-right: auto;
+  margin-left: auto;
+
+  // Schermi piccoli (cellulari - <576px)
+  @media (max-width: 576px) {
+    width: 100%; // Usa il 100% della larghezza disponibile
+    display: inline;
+  }
+
+  // Schermi medi (tablet - 576px a 768px)
+  @media (min-width: 576px) and (max-width: 768px) {
+    width: 540px;
+    display: inline;
+  }
+
+  // Schermi grandi (laptop - 768px a 992px)
+  @media (min-width: 768px) and (max-width: 992px) {
+    width: 720px;
+    display: inline;
+  }
+
+  // Schermi molto grandi (desktop - 992px a 1200px)
+  @media (min-width: 992px) and (max-width: 1200px) {
+    width: 960px;
+  }
+
+  // Schermi extra grandi (monitor grandi - >1200px)
+  @media (min-width: 1200px) {
+    width: 1320px;
+  }
+}

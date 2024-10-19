@@ -12,8 +12,9 @@ import { CommonModule } from '@angular/common';
 import { UserDataService } from '../services/user-data.service';
 import { ApiService } from '../services/api.service';
 import { HeaderGlobalAppComponent } from '../header-global-app/header-global-app.component';
-import { ToggleService } from '../toggle.service';
+import { ToggleService } from '../services/toggle.service';
 import { FooterComponent } from '../footer/footer.component';
+import { LoadingSpinnerComponent } from '../loading-spinner/loading-spinner.component';
 
 @Component({
   selector: 'app-login-form',
@@ -26,7 +27,8 @@ import { FooterComponent } from '../footer/footer.component';
     MatCardModule,
     MatIconModule,
     HeaderGlobalAppComponent,
-    FooterComponent
+    FooterComponent,
+    LoadingSpinnerComponent
   ],
   templateUrl: './login-form.component.html',
   styleUrl: './login-form.component.scss'
@@ -76,7 +78,7 @@ export class LoginFormComponent {
           this.dataUser.updateUser(response);
 
           this.router.navigate(['/home-detail']);
-          this.toggleService.toggleShowPageDetail('desc-crea-viaggio');
+          this.toggleService.toggleShowPageDetail('desc-area-personale');
           this.toggleService.toggleShowLoginIcon(false);
           this.toggleService.toggleShowLogoutIcon(true);
         },

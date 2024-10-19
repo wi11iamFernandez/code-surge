@@ -1,5 +1,5 @@
 import { Component, Injectable } from '@angular/core';
-import { RouterLink, RouterLinkActive, RouterOutlet } from '@angular/router';
+import { Route, Router, RouterLink, RouterLinkActive, RouterOutlet } from '@angular/router';
 import { CommonModule } from '@angular/common';
 
 
@@ -8,6 +8,8 @@ import { NavbarMainComponent } from './navbar-main/navbar-main.component';
 import { MainAboutUsComponent } from './main-about-us/main-about-us.component';
 import { ApiService } from './services/api.service';
 import { ViaggiService } from './services/viaggi.service';
+import { ToggleService } from './services/toggle.service';
+import { AuthService } from './services/auth.service';
 
 @Component({
   selector: 'app-root',
@@ -20,7 +22,7 @@ import { ViaggiService } from './services/viaggi.service';
 @Injectable({ providedIn: 'root' })
 export class AppComponent {
 
-  constructor(private apiService: ApiService, private viaggiService: ViaggiService) { }
+  constructor(private apiService: ApiService, private viaggiService: ViaggiService, private router: Router, private toggleService: ToggleService, private authService: AuthService) { }
 
   ngOnInit() {
     this.apiService.getViaggi().subscribe({
@@ -31,5 +33,12 @@ export class AppComponent {
         console.error('Errore durante il caricamento dei viaggi:', err);
       }
     });
+
+
+    const token = this.authService.getToken();  // Ottieni il token
+    this.toggleService.toggleShowLoginIcon(!token);
+    this.toggleService.toggleShowLogoutIcon(!!token);
+
+    this.router.navigate(['/']);
   }
 }
