@@ -37,6 +37,7 @@ function populateViaggi(viaggi) {
                         <p class="card-text">${viaggio.descrizione}</p>
                         <p><strong>Data Partenza:</strong> ${viaggio.data_partenza}</p>
                         <p><strong>Data Arrivo:</strong> ${viaggio.data_arrivo}</p>
+                        <button class="viaggio-button btn-danger" onclick="disiscriviti(${viaggio.id})">Disiscriviti</button>
                     </div>
                 </div>
             </div>
@@ -49,3 +50,28 @@ function populateViaggi(viaggi) {
 document.addEventListener('DOMContentLoaded', () => {
     fetchViaggiByUtente();  // Chiamata per recuperare i viaggi dell'utente autenticato
 });
+
+function disiscriviti(idViaggio) {
+    const conferma = confirm('Sei sicuro di voler disiscriverti da questo viaggio?');
+    if (!conferma) return;
+
+    // Effettua la chiamata DELETE all'API per disiscriversi
+    fetch(`/iscrizione/viaggio/{id}`, {
+        method: 'DELETE',
+        headers: {
+            'Content-Type': 'application/json'
+        }
+    })
+    .then(response => {
+        if (!response.ok) {
+            throw new Error('Errore durante la disiscrizione dal viaggio.');
+        }
+        alert('Ti sei disiscritto con successo dal viaggio.');
+        // Rimuovi il viaggio dalla lista (ricarica i viaggi)
+        fetchViaggiByUtente();
+    })
+    .catch(error => {
+        console.error('Errore:', error);
+        alert('Si è verificato un errore durante la disiscrizione.');
+    });
+}
