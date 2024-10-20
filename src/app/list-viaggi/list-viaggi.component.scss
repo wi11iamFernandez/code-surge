@@ -9,7 +9,7 @@ $bg-color-main: #4c95ae;
   .viaggio-card {
     width: 100%;
     max-width: 80%; /* Limite massimo della larghezza */
-    background-color: #f9f9f9;
+    background-color: #caec5cc9;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
     border-radius: 8px;
     margin: 1em;
@@ -19,6 +19,7 @@ $bg-color-main: #4c95ae;
     mat-card-title {
       font-size: 1.4rem;
       color: $bg-color-main;
+      font-weight: bold;
     }
 
     mat-card-subtitle {
@@ -42,12 +43,19 @@ $bg-color-main: #4c95ae;
           }
         }
       }
+
+      .prezzo {
+        p {
+          color: #30514e;
+        }
+      }
     }
 
+    /*
     mat-card-actions {
       display: flex;
       justify-content: flex-end;
-      align-items: center; /* Pulsante centrato verticalmente */
+      align-items: center; 
       position: relative;
       min-height: 0;
       padding: 0;
@@ -58,6 +66,7 @@ $bg-color-main: #4c95ae;
         bottom: 4em;
       }
     }
+    */
   }
 }
 

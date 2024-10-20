@@ -1,31 +1,62 @@
 <main class="viaggi-container">
   <mat-card *ngFor="let viaggio of viaggi" class="viaggio-card">
-    <mat-card-header>
-      <mat-card-title>{{ viaggio.nome }}</mat-card-title>
-      <mat-card-subtitle>{{ viaggio.nazione }}</mat-card-subtitle>
-    </mat-card-header>
-    <mat-card-content>
-      <div class="viaggio-dettagli">
-        <p>
-          <strong>Partenza:</strong>
-          {{ viaggio.data_partenza | date : "longDate" }} da
-          {{ viaggio.luogo_partenza }}
-        </p>
-        <p>
-          <strong>Arrivo:</strong>
-          {{ viaggio.data_arrivo | date : "longDate" }} a
-          {{ viaggio.luogo_arrivo }}
-        </p>
+    <div class="container my-3">
+      <div class="row">
+        <div class="col-md-8">
+          <mat-card-header>
+            <mat-card-title>{{ viaggio.nome }}</mat-card-title>
+            <mat-card-subtitle
+              >{{ viaggio.nazione }} ({{ viaggio.area }})</mat-card-subtitle
+            >
+          </mat-card-header>
+          <mat-card-content>
+            <div class="viaggio-dettagli">
+              <p>
+                <strong>Partenza:</strong>
+                {{ viaggio.data_partenza | date : "longDate" }} da
+                {{ viaggio.luogo_partenza }}
+              </p>
+              <p>
+                <strong>Arrivo:</strong>
+                {{ viaggio.data_arrivo | date : "longDate" }} a
+                {{ viaggio.luogo_arrivo }}
+              </p>
+            </div>
+          </mat-card-content>
+        </div>
+        <div class="col-md-4">
+          <div class="row">
+            <div class="col-12">
+              <div class="d-flex justify-content-center">
+                <mat-card-content>
+                  <div class="prezzo">
+                    <p>
+                      <strong>
+                        <span matTextPrefix>&euro;</span>
+                        {{ viaggio.costo }}
+                        <span matTextSuffix>.00</span>
+                      </strong>
+                    </p>
+                  </div>
+                </mat-card-content>
+              </div>
+            </div>
+            <div class="col-12">
+              <div class="d-flex justify-content-center">
+                <mat-card-actions>
+                  <button
+                    mat-raised-button
+                    color="primary"
+                    (click)="onMoreInfo(viaggio.id_viaggio)"
+                  >
+                    Dettagli
+                  </button>
+                </mat-card-actions>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
-    </mat-card-content>
-    <mat-card-actions>
-      <button
-        mat-raised-button
-        color="primary"
-        (click)="onMoreInfo(viaggio.id_viaggio)"
-      >
-        Maggiori Informazioni
-      </button>
-    </mat-card-actions>
+    </div>
   </mat-card>
 </main>

@@ -3,6 +3,8 @@ import { ViaggiService } from '../services/viaggi.service';
 import { CommonModule } from '@angular/common';
 import { MatCardModule } from '@angular/material/card';
 import { MatButtonModule } from '@angular/material/button';
+import { MatDialog } from '@angular/material/dialog';
+import { MyDialogComponent } from '../popup/my-dialog/my-dialog.component';
 
 @Component({
   selector: 'app-list-viaggi',
@@ -15,7 +17,7 @@ export class ListViaggiComponent {
 
   viaggi: any[] = [];
 
-  constructor(private viaggiService: ViaggiService) { }
+  constructor(private viaggiService: ViaggiService, private dialog: MatDialog) { }
 
   ngOnInit(): void {
     // Richiama i viaggi dal servizio
@@ -25,10 +27,11 @@ export class ListViaggiComponent {
     });
   }
 
-  // Metodo che potrebbe essere legato al pulsante "Maggiori Informazioni"
   onMoreInfo(viaggioId: number) {
-    console.log('Maggiori informazioni per il viaggio con ID:', viaggioId);
-    // Aggiungi la logica per navigare o mostrare più dettagli
+    this.dialog.open(MyDialogComponent, {
+      width: '70vw',
+      data: this.viaggi.find((element) => element.id_viaggio === viaggioId)
+    });
   }
 
   aggiornaViaggi(data: any) {

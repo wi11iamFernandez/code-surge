@@ -2,6 +2,7 @@ import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { finalize, Observable } from 'rxjs';
 import { LoadingService } from './loading.service';
+import { AuthService } from './auth.service';
 
 @Injectable({
   providedIn: 'root'
@@ -10,7 +11,7 @@ export class ApiService {
 
   private baseUrl = 'http://localhost:9006';
 
-  constructor(private http: HttpClient, private loadingService: LoadingService) { }
+  constructor(private http: HttpClient, private loadingService: LoadingService, private authService: AuthService) { }
 
   // Chiamata API per registrare un utente
   registerUser(registerData: any): Observable<any> {
@@ -64,6 +65,15 @@ export class ApiService {
     this.loadingService.show();
     const headers = new HttpHeaders().set('Authorization', `Bearer ${tokenData}`);
     return this.http.post(`${this.baseUrl}/api/auth/logout`, {}, { headers }).pipe(
+      finalize(() => this.loadingService.hide())  // Nascondi il caricamento quando l'operazione è completata
+    );
+  }
+
+  iscrizioneViaggio(idViaggio: number): Observable<any> {
+    this.loadingService.show();
+    const token = this.authService.getToken();
+    const headers = new HttpHeaders().set('Authorization', `Bearer ${token}`);
+    return this.http.get(`${this.baseUrl}/api/iscrizione/viaggio/${idViaggio}`, { headers }).pipe(
       finalize(() => this.loadingService.hide())  // Nascondi il caricamento quando l'operazione è completata
     );
   }

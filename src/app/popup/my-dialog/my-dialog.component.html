@@ -1,0 +1,44 @@
+<div class="container p-3">
+  <div class="d-flex justify-content-center">
+    <h1 mat-dialog-title>{{ data.nome }}</h1>
+  </div>
+
+  <div mat-dialog-content>
+    <div class="row">
+      <div class="col-md-5 my-1">
+        <p><strong>Organizzatore:</strong></p>
+      </div>
+      <div class="col-md-7 my-1">
+        <p>{{ data.autore.nome }} {{ data.autore.cognome }}</p>
+      </div>
+      <div class="col-md-5 my-1"><strong>Descrizione:</strong></div>
+      <div class="col-md-7 my-1">{{ data.descrizione }}</div>
+      <div class="col-md-5 my-1"><strong>Area:</strong></div>
+      <div class="col-md-7 my-1">{{ data.area }} ({{ data.nazione }})</div>
+      <div class="col-md-5 my-1"><strong>Partenza:</strong></div>
+      <div class="col-md-7 my-1">
+        {{ data.luogo_partenza }} il {{ data.data_partenza }}
+      </div>
+      <div class="col-md-5 my-1"><strong>Arrivo:</strong></div>
+      <div class="col-md-7 my-1">
+        {{ data.luogo_arrivo }} il {{ data.data_arrivo }}
+      </div>
+      <div class="col-md-5 my-1"><strong>Costo:</strong></div>
+      <div class="col-md-7 my-1">€{{ data.costo }}</div>
+      <div class="col-md-5 my-1"><strong>Stato:</strong></div>
+      <div class="col-md-7 my-1">
+        <span *ngIf="data.confermato; else nonConfermato">Confermato</span>
+        <ng-template #nonConfermato
+          >Non confermato (numero minimo: {{ data.numero_minimo }})</ng-template
+        >
+      </div>
+    </div>
+  </div>
+
+  <div mat-dialog-actions>
+    <button mat-raised-button color="primary" (click)="prenota()">
+      Prenota Viaggio
+    </button>
+    <button mat-button mat-dialog-close>Chiudi</button>
+  </div>
+</div>

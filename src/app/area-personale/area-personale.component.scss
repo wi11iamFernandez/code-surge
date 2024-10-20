@@ -6,7 +6,10 @@
 
   .container-area-personale {
     height: 80vh; // Imposta l'altezza del container
-    display: flex; // Utilizza Flexbox per centrare il contenuto
-    padding: 1em 0; // Padding interno del container
+
+    .dimension-card {
+      width: 15em;
+      height: 15em;
+    }
   }
 }

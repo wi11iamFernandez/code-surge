@@ -1,1 +1,185 @@
-<p>crea-viaggio works!</p>
+<app-header-global-app></app-header-global-app>
+<div class="main-contenitore py-4">
+  <div class="container">
+    <div>
+      <h4 class="text-center my-3">Crea un nuovo viaggio</h4>
+      <!-- Contenitore pulsanti -->
+      <div class="mb-3 d-flex justify-content-end gap-2">
+        <button
+          mat-raised-button
+          color="primary"
+          [disabled]="viaggioForm.invalid"
+        >
+          Salva
+        </button>
+        <button
+          mat-button
+          type="button"
+          class="ms-3"
+          (click)="onCancel()"
+          [routerLink]="['/']"
+          routerLinkActive="active"
+        >
+          Annulla
+        </button>
+      </div>
+    </div>
+    <form [formGroup]="viaggioForm" (ngSubmit)="onSave()">
+      <div class="row">
+        <div class="col-md-4 col-sm-12 mb-3 px-3">
+          <mat-form-field appearance="fill" class="w-100">
+            <mat-label>Nome</mat-label>
+            <input
+              matInput
+              formControlName="nome"
+              placeholder="Nome del viaggio"
+            />
+            <mat-error *ngIf="viaggioForm.get('nome')?.hasError('required')">
+              Il nome è obbligatorio
+            </mat-error>
+          </mat-form-field>
+
+          <mat-form-field appearance="fill" class="w-100">
+            <mat-label>Data di partenza</mat-label>
+            <input
+              matInput
+              [matDatepicker]="dpPartenza"
+              formControlName="data_partenza"
+              placeholder="Scegli la data di partenza"
+            />
+            <mat-datepicker-toggle
+              matSuffix
+              [for]="dpPartenza"
+            ></mat-datepicker-toggle>
+            <mat-datepicker #dpPartenza></mat-datepicker>
+            <mat-error
+              *ngIf="viaggioForm.get('data_partenza')?.hasError('required')"
+            >
+              La data di partenza è obbligatoria
+            </mat-error>
+          </mat-form-field>
+
+          <mat-form-field appearance="fill" class="w-100">
+            <mat-label>Area/Continente</mat-label>
+            <input
+              matInput
+              formControlName="area"
+              placeholder="Area del viaggio"
+            />
+            <mat-error *ngIf="viaggioForm.get('area')?.hasError('required')">
+              L'area è obbligatoria
+            </mat-error>
+          </mat-form-field>
+        </div>
+        <div class="col-md-4 col-sm-12 mb-3 px-3">
+          <mat-form-field appearance="fill" class="w-100">
+            <mat-label>Nazione</mat-label>
+            <input
+              matInput
+              formControlName="nazione"
+              placeholder="Nazione del viaggio"
+            />
+            <mat-error *ngIf="viaggioForm.get('nazione')?.hasError('required')">
+              La nazione è obbligatoria
+            </mat-error>
+          </mat-form-field>
+
+          <mat-form-field appearance="fill" class="w-100">
+            <mat-label>Data di arrivo</mat-label>
+            <input
+              matInput
+              [matDatepicker]="dpArrivo"
+              formControlName="data_arrivo"
+              placeholder="Scegli la data di arrivo"
+            />
+            <mat-datepicker-toggle
+              matSuffix
+              [for]="dpArrivo"
+            ></mat-datepicker-toggle>
+            <mat-datepicker #dpArrivo></mat-datepicker>
+            <mat-error
+              *ngIf="viaggioForm.get('data_arrivo')?.hasError('required')"
+            >
+              La data di arrivo è obbligatoria
+            </mat-error>
+          </mat-form-field>
+
+          <mat-form-field appearance="fill" class="w-100">
+            <mat-label>Costo</mat-label>
+            <input
+              matInput
+              formControlName="costo"
+              type="number"
+              placeholder="Costo del viaggio in euro"
+              min="0"
+            />
+            <mat-error *ngIf="viaggioForm.get('costo')?.hasError('min')">
+              Il costo deve essere maggiore di 0
+            </mat-error>
+          </mat-form-field>
+        </div>
+        <div class="col-md-4 col-sm-12 mb-3 px-3">
+          <mat-form-field appearance="fill" class="w-100">
+            <mat-label>Luogo di partenza</mat-label>
+            <input
+              matInput
+              formControlName="luogo_partenza"
+              placeholder="Inserisci il luogo di partenza"
+            />
+            <mat-error
+              *ngIf="viaggioForm.get('luogo_partenza')?.hasError('required')"
+            >
+              Il luogo di partenza è obbligatorio
+            </mat-error>
+          </mat-form-field>
+
+          <mat-form-field appearance="fill" class="w-100">
+            <mat-label>Luogo di arrivo</mat-label>
+            <input
+              matInput
+              formControlName="luogo_arrivo"
+              placeholder="Inserisci il luogo di arrivo"
+            />
+            <mat-error
+              *ngIf="viaggioForm.get('luogo_arrivo')?.hasError('required')"
+            >
+              Il luogo di arrivo è obbligatorio
+            </mat-error>
+          </mat-form-field>
+
+          <mat-form-field appearance="fill" class="w-100">
+            <mat-label>Numero minimo partecipanti</mat-label>
+            <input
+              matInput
+              formControlName="numero_minimo"
+              type="number"
+              min="3"
+            />
+            <mat-error
+              *ngIf="viaggioForm.get('numero_minimo')?.hasError('min')"
+            >
+              Inserisci almeno 1 partecipante
+            </mat-error>
+          </mat-form-field>
+        </div>
+        <div class="col-md-4 col-sm-12 mb-3 px-3">
+          <mat-form-field appearance="fill" class="w-100">
+            <mat-label>Descrizione</mat-label>
+            <textarea
+              matInput
+              formControlName="descrizione"
+              placeholder="Descrizione del viaggio"
+              rows="4"
+            ></textarea>
+            <mat-error
+              *ngIf="viaggioForm.get('descrizione')?.hasError('required')"
+            >
+              La descrizione è obbligatoria
+            </mat-error>
+          </mat-form-field>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>
+<app-loading-spinner></app-loading-spinner>

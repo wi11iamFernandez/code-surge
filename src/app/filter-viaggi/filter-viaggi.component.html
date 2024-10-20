@@ -1,4 +1,4 @@
-<div class="pt-4 main-contenitore">
+<div class="pt-4 pb-4 main-contenitore">
   <form [formGroup]="filterForm" class="filter-form">
     <div class="container">
       <div class="row">
@@ -75,6 +75,7 @@
             type="number"
             formControlName="costo"
             placeholder="Inserisci il costo"
+            min="0"
           />
           <span matTextPrefix>&euro;</span>
           <span matTextSuffix>.00</span>
