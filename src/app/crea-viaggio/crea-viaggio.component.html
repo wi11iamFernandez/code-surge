@@ -9,6 +9,7 @@
           mat-raised-button
           color="primary"
           [disabled]="viaggioForm.invalid"
+          (click)="onSave()"
         >
           Salva
         </button>
@@ -16,7 +17,6 @@
           mat-button
           type="button"
           class="ms-3"
-          (click)="onCancel()"
           [routerLink]="['/']"
           routerLinkActive="active"
         >

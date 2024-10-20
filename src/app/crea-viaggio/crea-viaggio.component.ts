@@ -11,6 +11,8 @@ import { MatInputModule } from '@angular/material/input';
 import { HeaderGlobalAppComponent } from '../header-global-app/header-global-app.component';
 import { RouterLink, RouterLinkActive } from '@angular/router';
 import { LoadingSpinnerComponent } from '../loading-spinner/loading-spinner.component';
+import { ApiService } from '../services/api.service';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-crea-viaggio',
@@ -34,7 +36,7 @@ import { LoadingSpinnerComponent } from '../loading-spinner/loading-spinner.comp
 export class CreaViaggioComponent {
   viaggioForm: FormGroup;
 
-  constructor(private fb: FormBuilder, private http: HttpClient) {
+  constructor(private fb: FormBuilder, private apiService: ApiService, private snackBar: MatSnackBar) {
     this.viaggioForm = this.fb.group({
       nome: ['', Validators.required],
       descrizione: [''],
@@ -53,25 +55,38 @@ export class CreaViaggioComponent {
 
   // Funzione per gestire il salvataggio del viaggio
   onSave() {
-    /*
     if (this.viaggioForm.valid) {
       const viaggioData = this.viaggioForm.value;
-      this.http.post('/api/viaggio/create', viaggioData).subscribe({
-        next: (response) => {
-          console.log('Viaggio creato con successo', response);
-          this.dialogRef.close();
-        },
-        error: (error) => {
-          console.error('Errore nella creazione del viaggio', error);
-        }
+
+      this.apiService.createViaggio(viaggioData)
+        .subscribe({
+          next: (response) => {
+            this.showSuccess();
+          },
+          error: (error) => {
+            this.showError();
+          }
+        });
+    } else {
+      this.snackBar.open('Errore nella compilazione dei dati.', 'Chiudi', {
+        duration: 3000,
+        panelClass: ['error-snackbar']
       });
     }
-      */
   }
 
-  // Funzione per chiudere la finestra senza salvare
-  onCancel() {
+  showSuccess() {
+    this.snackBar.open('Viaggio creato con successo!', 'Chiudi', {
+      duration: 3000,
+      panelClass: ['success-snackbar']
+    });
+  }
 
+  showError() {
+    this.snackBar.open('Errore nella creazione del viaggio.', 'Chiudi', {
+      duration: 3000,
+      panelClass: ['error-snackbar']
+    });
   }
 
 }
