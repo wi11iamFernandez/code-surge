@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lista Viaggi Utente</title>
+    <link href="path/to/bootstrap.min.css" rel="stylesheet"> <!-- Aggiorna il percorso di Bootstrap -->
+    <link href="styles.css" rel="stylesheet"> <!-- Aggiorna il percorso del tuo file CSS -->
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <div class="container-fluid">
+           
+            <a class="navbar-brand d-flex align-items-center" href="/home">
+                <img src="img/home.png" alt="Home" width="30" height="30" class="d-inline-block">
+                <span class="nav-text ms-2">Home</span>
+            </a>
+
+            
+            <a class="nav-link d-flex align-items-center" href="/profilo">
+                <img src="img/profilo4.png" alt="Profilo" width="30" height="30" class="d-inline-block">
+                <span class="nav-text ms-2">Profilo</span>
+            </a>
+
+            
+            <a class="nav-link d-flex align-items-center" href="/logout">
+                <img src="img/logout.png" alt="Logout" width="30" height="30" class="d-inline-block">
+                <span class="nav-text ms-2">Logout</span>
+            </a>
+        </div>
+    </nav>
+
+    <div class="container mt-4">
+        <h1 class="text-center">I tuoi Viaggi</h1>
+        <div id="viaggi-container" class="row">
+            <!-- I viaggi saranno inseriti qui dinamicamente con JavaScript -->
+        </div>
+    </div>
+
+    <script src="script.js"></script> <!-- Aggiorna il percorso del tuo file JS -->
+</body>
+</html>
