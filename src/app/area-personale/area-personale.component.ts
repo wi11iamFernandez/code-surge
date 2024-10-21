@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { RouterLink, RouterLinkActive } from '@angular/router';
+import { ToggleService } from '../services/toggle.service';
 
 @Component({
   selector: 'app-area-personale',
@@ -10,4 +11,9 @@ import { RouterLink, RouterLinkActive } from '@angular/router';
 })
 export class AreaPersonaleComponent {
 
+  constructor(private toggleService: ToggleService) { }
+
+  onAreaViaggiUtente() {
+    this.toggleService.setShowViaggiRichiamtiDa('me')
+  }
 }

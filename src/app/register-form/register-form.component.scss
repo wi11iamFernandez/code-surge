@@ -5,24 +5,21 @@
     background-image: url("/images/boke-register.jpg"); // Sostituisci con il percorso della tua immagine
     background-size: cover; // Copre l'intero container
     background-position: center; // Centra l'immagine
+    margin-top: 3em;
 
-    .group-inputs {
-      padding: 0 3em;
-      mat-form-field {
-        width: 100%;
-      }
-    }
+    .row {
+      margin: 4rem;
 
-    .invia-dati {
-      display: flex;
-      justify-content: center;
+      .invia-dati {
+        display: flex;
+        justify-content: center;
 
-      button {
-        width: 15%;
-        margin-bottom: 2em;
-        color: #09a58e;
+        button {
+          width: 15%;
+          margin-bottom: 2em;
+          color: #09a58e;
+        }
       }
     }
   }
-
 }

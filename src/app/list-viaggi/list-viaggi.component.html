@@ -41,7 +41,7 @@
                 </mat-card-content>
               </div>
             </div>
-            <div class="col-12">
+            <div class="col-12" *ngIf="utente === 'all'">
               <div class="d-flex justify-content-center">
                 <mat-card-actions>
                   <button
@@ -50,6 +50,19 @@
                     (click)="onMoreInfo(viaggio.id_viaggio)"
                   >
                     Dettagli
+                  </button>
+                </mat-card-actions>
+              </div>
+            </div>
+            <div class="col-12" *ngIf="utente === 'me'">
+              <div class="d-flex justify-content-center">
+                <mat-card-actions>
+                  <button
+                    mat-raised-button
+                    color="primary"
+                    (click)="onMoreInfo(viaggio.id_viaggio)"
+                  >
+                    Modifica
                   </button>
                 </mat-card-actions>
               </div>

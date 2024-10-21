@@ -7,9 +7,13 @@
   .container-area-personale {
     height: 80vh; // Imposta l'altezza del container
 
-    .dimension-card {
-      width: 15em;
-      height: 15em;
+    .anim-card {
+      cursor: pointer;
+
+      .dimension-card {
+        width: 15em;
+        height: 15em;
+      }
     }
   }
 }

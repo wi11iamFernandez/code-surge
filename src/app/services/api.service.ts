@@ -87,4 +87,13 @@ export class ApiService {
     );
   }
 
+  mieiViaggi(): Observable<any> {
+    this.loadingService.show();
+    const token = this.authService.getToken();
+    const headers = new HttpHeaders().set('Authorization', `Bearer ${token}`);
+    return this.http.get(`${this.baseUrl}/api/viaggio/me`, { headers }).pipe(
+      finalize(() => this.loadingService.hide())  // Nascondi il caricamento quando l'operazione è completata
+    );
+  }
+
 }

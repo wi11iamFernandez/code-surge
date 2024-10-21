@@ -22,6 +22,10 @@ export class NavbarMainComponent {
   onToggleDescription(buttonName: string) {
     this.selectedButton = buttonName;
     this.toggleService.toggleShowPageDetail(buttonName); // Chiama il metodo nel service per cambiare lo stato
+
+    if (buttonName === 'desc-viaggi') {
+      this.toggleService.setShowViaggiRichiamtiDa('all');
+    }
   }
 
   getVisibilityAreaPersonal() {

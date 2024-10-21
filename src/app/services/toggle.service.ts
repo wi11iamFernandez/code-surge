@@ -15,12 +15,25 @@ export class ToggleService {
   // BehaviorSubject per gestire la visibilità dell'icona di logout
   private showLogoutIcon = new BehaviorSubject<boolean>(false);
 
+  // BehaviorSubject per gestire la lista dei viaggi da visualizzare
+  private showViaggiRichiamtiDa = new BehaviorSubject<string>('all');
+
   // Observable pubblico che altri componenti possono sottoscrivere
   showDetailPage$ = this.showPageDetail.asObservable();
   showLoginIcon$ = this.showLoginIcon.asObservable();
   showLogoutIcon$ = this.showLogoutIcon.asObservable();
+  showViaggiRichiamtiDa$ = this.showViaggiRichiamtiDa.asObservable();
 
   constructor() { }
+
+  // Metodo per cambiare quali viaggi guardare
+  setShowViaggiRichiamtiDa(tipoUtente: string) {
+    this.showViaggiRichiamtiDa.next(tipoUtente); // Cambia il valore attuale
+  }
+
+  getShowViaggiRichiamtiDa() {
+    return this.showViaggiRichiamtiDa.getValue();
+  }
 
   // Metodo per cambiare la parola chiave della pagina attuale
   toggleShowPageDetail(page: string) {
