@@ -1,93 +1,63 @@
-<app-header-global-app></app-header-global-app>
+<div class="container px-0">
+  <app-header-global-app></app-header-global-app>
 
-<div class="pt-4 main-contenitore">
-  <div class="mt-4 centra-contenuto">
-    <mat-card class="login-card">
-      <mat-card-header>
-        <mat-card-title>Login</mat-card-title>
-      </mat-card-header>
+  <div class="py-4 main-contenitore vh-100">
+    <div class="mt-4 centra-contenuto">
+      <mat-card class="login-card">
+        <mat-card-header>
+          <mat-card-title>Login</mat-card-title>
+        </mat-card-header>
 
-      <mat-card-content>
-        <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
-          <!-- Username -->
-          <mat-form-field appearance="outline" class="full-width">
-            <mat-label>Email</mat-label>
-            <input
-              matInput
-              placeholder="Enter your email"
-              formControlName="email"
-              required
-            />
-            <mat-error
-              *ngIf="
+        <mat-card-content>
+          <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+            <!-- Username -->
+            <mat-form-field appearance="outline" class="full-width">
+              <mat-label>Email</mat-label>
+              <input matInput placeholder="Enter your email" formControlName="email" required />
+              <mat-error *ngIf="
                 loginForm.get('email')?.hasError('required') &&
                 loginForm.get('email')?.touched
-              "
-            >
-              Email is required
-            </mat-error>
-            <mat-error
-              *ngIf="
+              ">
+                Email is required
+              </mat-error>
+              <mat-error *ngIf="
                 loginForm.get('email')?.hasError('email') &&
                 loginForm.get('email')?.touched
-              "
-            >
-              Please enter a valid email address
-            </mat-error>
-          </mat-form-field>
+              ">
+                Please enter a valid email address
+              </mat-error>
+            </mat-form-field>
 
-          <!-- Password -->
-          <mat-form-field appearance="outline" class="full-width">
-            <mat-label>Password</mat-label>
-            <input
-              matInput
-              [type]="hide ? 'password' : 'text'"
-              placeholder="Enter your password"
-              formControlName="password"
-              required
-            />
-            <button
-              mat-icon-button
-              matSuffix
-              (click)="hide = !hide"
-              [attr.aria-label]="hide ? 'Show password' : 'Hide password'"
-              [attr.aria-pressed]="!hide"
-            >
-              <mat-icon>{{ hide ? "visibility_off" : "visibility" }}</mat-icon>
-            </button>
-            <mat-error
-              *ngIf="
+            <!-- Password -->
+            <mat-form-field appearance="outline" class="full-width">
+              <mat-label>Password</mat-label>
+              <input matInput [type]="hide ? 'password' : 'text'" placeholder="Enter your password"
+                formControlName="password" required />
+              <button mat-icon-button matSuffix (click)="hide = !hide"
+                [attr.aria-label]="hide ? 'Show password' : 'Hide password'" [attr.aria-pressed]="!hide">
+                <mat-icon>{{ hide ? "visibility_off" : "visibility" }}</mat-icon>
+              </button>
+              <mat-error *ngIf="
                 loginForm.get('password')?.hasError('required') &&
                 loginForm.get('password')?.touched
-              "
-            >
-              Password is required
-            </mat-error>
-          </mat-form-field>
+              ">
+                Password is required
+              </mat-error>
+            </mat-form-field>
 
-          <!-- Login Button -->
-          <div class="button-group">
-            <button
-              mat-raised-button
-              color="primary"
-              type="submit"
-              [disabled]="loginForm.invalid"
-            >
-              Login
-            </button>
-            <button
-              mat-button
-              color="accent"
-              type="button"
-              (click)="onRegister()"
-            >
-              Registrati
-            </button>
-          </div>
-        </form>
-      </mat-card-content>
-    </mat-card>
+            <!-- Login Button -->
+            <div class="button-group">
+              <button mat-raised-button color="primary" type="submit" [disabled]="loginForm.invalid">
+                Login
+              </button>
+              <button mat-button color="accent" type="button" (click)="onRegister()">
+                Registrati
+              </button>
+            </div>
+          </form>
+        </mat-card-content>
+      </mat-card>
+    </div>
   </div>
 </div>
-
 <app-loading-spinner></app-loading-spinner>

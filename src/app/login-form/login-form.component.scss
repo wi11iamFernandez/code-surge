@@ -1,54 +1,32 @@
-.main-contenitore {
+.container {
   background: linear-gradient(#eddece, #02202d);
 
-  .centra-contenuto {
-    display: flex;
-    justify-content: center;
-    align-items: center;
+  .main-contenitore {
+    .centra-contenuto {
+      display: flex;
+      justify-content: center;
+      align-items: center;
 
-    .login-card {
-      max-width: 25em;
-      padding: 1em;
-      box-shadow: 0 3px 10px rgba(0, 0, 0, 0.2);
+      .login-card {
+        max-width: 25em;
+        padding: 1em;
+        box-shadow: 0 3px 10px rgba(0, 0, 0, 0.2);
 
-      mat-card-title {
-        margin: 1rem 0;
+        mat-card-title {
+          margin: 1rem 0;
+        }
+      }
+
+      .full-width {
+        width: 100%;
+      }
+
+      .button-group {
+        display: flex;
+        justify-content: space-between;
+        margin-top: 16px;
       }
     }
-
-    .full-width {
-      width: 100%;
-    }
-
-    .button-group {
-      display: flex;
-      justify-content: space-between;
-      margin-top: 16px;
-    }
   }
 
-  // Schermi piccoli (cellulari - <576px)
-  @media (max-width: 576px) {
-    height: 100%;
-  }
-
-  // Schermi medi (tablet - 576px a 768px)
-  @media (min-width: 576px) and (max-width: 768px) {
-    height: 87%;
-  }
-
-  // Schermi grandi (laptop - 768px a 992px)
-  @media (min-width: 768px) and (max-width: 992px) {
-    height: 87%;
-  }
-
-  // Schermi molto grandi (desktop - 992px a 1200px)
-  @media (min-width: 992px) and (max-width: 1200px) {
-    height: 87%;
-  }
-
-  // Schermi extra grandi (monitor grandi - >1200px)
-  @media (min-width: 1200px) {
-    height: 100vh;
-  }
 }

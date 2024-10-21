@@ -1,148 +1,103 @@
-<app-header-global-app></app-header-global-app>
-<div class="main-contenitore">
-  <div class="container p-4">
-    <mat-card class="register-card p-4">
-      <form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
-        <div class="row">
-          <div class="col-lg-6 col-md-12 mb-3 group-inputs">
-            <mat-form-field appearance="fill">
-              <mat-label>Email</mat-label>
-              <input
-                matInput
-                formControlName="email"
-                type="email"
-                placeholder="Inserisci la tua email"
-              />
-              <mat-error *ngIf="registerForm.get('email')?.hasError('pattern')"
-                >Inserisci un'email valida</mat-error
-              >
-            </mat-form-field>
+<div class="container vh-100 p-0">
+  <app-header-global-app></app-header-global-app>
+  <div class="d-flex ">
+    <div class="">
+      <mat-card class="register-card">
+        <form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
+          <div class="row">
+            <div class="col-lg-6 col-md-12 mb-3 group-inputs">
+              <mat-form-field appearance="fill">
+                <mat-label>Email</mat-label>
+                <input matInput formControlName="email" type="email" placeholder="Inserisci la tua email" />
+                <mat-error *ngIf="registerForm.get('email')?.hasError('pattern')">Inserisci un'email valida</mat-error>
+              </mat-form-field>
 
-            <mat-form-field appearance="fill">
-              <mat-label>Password</mat-label>
-              <input
-                matInput
-                formControlName="password"
-                [type]="hidePassword ? 'password' : 'text'"
-                placeholder="Inserisci la password"
-              />
-              <button
-                type="button"
-                mat-icon-button
-                matSuffix
-                (click)="hidePassword = !hidePassword"
-              >
-                <mat-icon>{{
-                  hidePassword ? "visibility_off" : "visibility"
-                }}</mat-icon>
-              </button>
+              <mat-form-field appearance="fill">
+                <mat-label>Password</mat-label>
+                <input matInput formControlName="password" [type]="hidePassword ? 'password' : 'text'"
+                  placeholder="Inserisci la password" />
+                <button type="button" mat-icon-button matSuffix (click)="hidePassword = !hidePassword">
+                  <mat-icon>{{
+                    hidePassword ? "visibility_off" : "visibility"
+                    }}</mat-icon>
+                </button>
 
-              <!-- Errori di validazione -->
-              <mat-error *ngIf="password?.hasError('required')">
-                La password è obbligatoria
-              </mat-error>
-              <mat-error
-                *ngIf="
+                <!-- Errori di validazione -->
+                <mat-error *ngIf="password?.hasError('required')">
+                  La password è obbligatoria
+                </mat-error>
+                <mat-error *ngIf="
                   !password?.hasError('required') &&
                   password?.hasError('minlength')
-                "
-              >
-                Minimo 12 caratteri
-              </mat-error>
-              <mat-error
-                *ngIf="
+                ">
+                  Minimo 12 caratteri
+                </mat-error>
+                <mat-error *ngIf="
                   !password?.hasError('required') &&
                   !password?.hasError('minlength') &&
                   password?.hasError('pattern')
-                "
-              >
-                La password deve contenere una maiuscola, una minuscola, un
-                numero e un carattere speciale
-              </mat-error>
-            </mat-form-field>
+                ">
+                  La password deve contenere una maiuscola, una minuscola, un
+                  numero e un carattere speciale
+                </mat-error>
+              </mat-form-field>
 
-            <mat-form-field appearance="fill">
-              <mat-label>Ripeti Password</mat-label>
-              <input
-                matInput
-                formControlName="repeatPassword"
-                [type]="hideRepeatPassword ? 'password' : 'text'"
-                placeholder="Ripeti la password"
-              />
-              <button
-                type="button"
-                mat-icon-button
-                matSuffix
-                (click)="hideRepeatPassword = !hideRepeatPassword"
-              >
-                <mat-icon>{{
-                  hideRepeatPassword ? "visibility_off" : "visibility"
-                }}</mat-icon>
+              <mat-form-field appearance="fill">
+                <mat-label>Ripeti Password</mat-label>
+                <input matInput formControlName="repeatPassword" [type]="hideRepeatPassword ? 'password' : 'text'"
+                  placeholder="Ripeti la password" />
+                <button type="button" mat-icon-button matSuffix (click)="hideRepeatPassword = !hideRepeatPassword">
+                  <mat-icon>{{
+                    hideRepeatPassword ? "visibility_off" : "visibility"
+                    }}</mat-icon>
+                </button>
+                <mat-error *ngIf="passwordsMatch()">Le password non coincidono</mat-error>
+              </mat-form-field>
+            </div>
+            <div class="col-lg-6 col-md-12 mb-3 group-inputs">
+              <mat-form-field appearance="fill">
+                <mat-label>Nome</mat-label>
+                <input matInput formControlName="nome" placeholder="Inserisci il tuo nome" />
+              </mat-form-field>
+
+              <mat-form-field appearance="fill">
+                <mat-label>Cognome</mat-label>
+                <input matInput formControlName="cognome" placeholder="Inserisci il tuo cognome" />
+              </mat-form-field>
+
+              <mat-form-field appearance="fill">
+                <mat-label>Data di nascita</mat-label>
+                <input matInput formControlName="data_nascita" type="date" />
+              </mat-form-field>
+            </div>
+
+            <div class="col-lg-6 col-md-12 mb-3 group-inputs">
+              <mat-form-field appearance="fill">
+                <mat-label>Genere</mat-label>
+                <mat-select formControlName="genere">
+                  <mat-option *ngFor="let gender of genders" [value]="gender">{{
+                    gender
+                    }}</mat-option>
+                </mat-select>
+              </mat-form-field>
+            </div>
+            <div class="col-lg-6 col-md-12 mb-3 group-inputs">
+              <mat-form-field appearance="fill">
+                <mat-label>Telefono</mat-label>
+                <input matInput formControlName="telefono" type="tel"
+                  placeholder="Inserisci il tuo numero di telefono" />
+              </mat-form-field>
+            </div>
+            <div class="invia-dati">
+              <button mat-raised-button color="primary" type="submit"
+                [disabled]="!registerForm.valid || passwordsMatch()">
+                Registrati
               </button>
-              <mat-error *ngIf="passwordsMatch()"
-                >Le password non coincidono</mat-error
-              >
-            </mat-form-field>
+            </div>
           </div>
-          <div class="col-lg-6 col-md-12 mb-3 group-inputs">
-            <mat-form-field appearance="fill">
-              <mat-label>Nome</mat-label>
-              <input
-                matInput
-                formControlName="nome"
-                placeholder="Inserisci il tuo nome"
-              />
-            </mat-form-field>
-
-            <mat-form-field appearance="fill">
-              <mat-label>Cognome</mat-label>
-              <input
-                matInput
-                formControlName="cognome"
-                placeholder="Inserisci il tuo cognome"
-              />
-            </mat-form-field>
-
-            <mat-form-field appearance="fill">
-              <mat-label>Data di nascita</mat-label>
-              <input matInput formControlName="data_nascita" type="date" />
-            </mat-form-field>
-          </div>
-
-          <div class="col-lg-6 col-md-12 mb-3 group-inputs">
-            <mat-form-field appearance="fill">
-              <mat-label>Genere</mat-label>
-              <mat-select formControlName="genere">
-                <mat-option *ngFor="let gender of genders" [value]="gender">{{
-                  gender
-                }}</mat-option>
-              </mat-select>
-            </mat-form-field>
-          </div>
-          <div class="col-lg-6 col-md-12 mb-3 group-inputs">
-            <mat-form-field appearance="fill">
-              <mat-label>Telefono</mat-label>
-              <input
-                matInput
-                formControlName="telefono"
-                type="tel"
-                placeholder="Inserisci il tuo numero di telefono"
-              />
-            </mat-form-field>
-          </div>
-          <div class="container invia-dati">
-            <button
-              mat-raised-button
-              color="primary"
-              type="submit"
-              [disabled]="!registerForm.valid || passwordsMatch()"
-            >
-              Registrati
-            </button>
-          </div>
-        </div>
-      </form>
-    </mat-card>
+        </form>
+      </mat-card>
+    </div>
   </div>
 </div>
 <app-loading-spinner></app-loading-spinner>
