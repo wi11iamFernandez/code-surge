@@ -15,5 +15,11 @@ export class AreaPersonaleComponent {
 
   onAreaViaggiUtente() {
     this.toggleService.setShowViaggiRichiamtiDa('me')
+    this.toggleService.setTipoOperazioneViaggio('miei-viaggi');
+  }
+
+  onCreaViaggio() {
+    this.toggleService.setShowViaggiRichiamtiDa('me')
+    this.toggleService.setTipoOperazioneViaggio('crea-viaggio');
   }
 }

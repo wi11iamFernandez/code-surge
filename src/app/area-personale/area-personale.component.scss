@@ -29,6 +29,12 @@
         background-position: center; // Centra l'immagine
       }
 
+      &.sfondo-mie-iscrizioni {
+        background-image: url("/images/mie-iscrizioni.jpg"); // Sostituisci con il percorso della tua immagine
+        background-size: cover; // Copre l'intero container
+        background-position: center; // Centra l'immagine
+      }
+
       .dimension-card {
         width: 15em;
         height: 15em;

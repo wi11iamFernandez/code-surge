@@ -60,6 +60,8 @@
                   <button
                     mat-raised-button
                     color="primary"
+                    [routerLink]="['/crea-viaggio']"
+                    routerLinkActive="active"
                     (click)="onModificaViaggio(viaggio.id_viaggio)"
                   >
                     Modifica

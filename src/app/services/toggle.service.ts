@@ -16,23 +16,65 @@ export class ToggleService {
   private showLogoutIcon = new BehaviorSubject<boolean>(false);
 
   // BehaviorSubject per gestire la lista dei viaggi da visualizzare
-  private showViaggiRichiamtiDa = new BehaviorSubject<string>('all');
+  private showViaggiRichiamatiDa = new BehaviorSubject<string>('all');
+
+  // BehaviorSubject per mantenere lo stato del viaggio corrente
+  private viaggioSubject = new BehaviorSubject<any>(null); // Inizialmente null
+
+  // BehaviorSubject per capire la gestione del viaggio
+  private gestioneViaggio = new BehaviorSubject<string>('miei-viaggi');
+
+  // BehaviorSubject per gestire la lista dei viaggi
+  private listaViaggi = new BehaviorSubject<any[]>([]); // Lista inizialmente vuota
+
 
   // Observable pubblico che altri componenti possono sottoscrivere
   showDetailPage$ = this.showPageDetail.asObservable();
   showLoginIcon$ = this.showLoginIcon.asObservable();
   showLogoutIcon$ = this.showLogoutIcon.asObservable();
-  showViaggiRichiamtiDa$ = this.showViaggiRichiamtiDa.asObservable();
+  showViaggiRichiamatiDa$ = this.showViaggiRichiamatiDa.asObservable();
+  viaggio$ = this.viaggioSubject.asObservable(); // Observable a cui si possono iscrivere i componenti
+  tipoOperazioneViaggio$ = this.gestioneViaggio.asObservable();
+  // Observable pubblico per la lista dei viaggi
+  listaViaggi$ = this.listaViaggi.asObservable();
 
   constructor() { }
 
-  // Metodo per cambiare quali viaggi guardare
-  setShowViaggiRichiamtiDa(tipoUtente: string) {
-    this.showViaggiRichiamtiDa.next(tipoUtente); // Cambia il valore attuale
+  // Metodo per ottenere la lista dei viaggi attuale
+  getListaViaggi(): any[] {
+    return this.listaViaggi.getValue();
   }
 
-  getShowViaggiRichiamtiDa() {
-    return this.showViaggiRichiamtiDa.getValue();
+  // Metodo per aggiornare la lista dei viaggi
+  setListaViaggi(nuovaListaViaggi: any[]): void {
+    this.listaViaggi.next(nuovaListaViaggi);
+  }
+
+  setTipoOperazioneViaggio(tipoOperazione: string) {
+    this.gestioneViaggio.next(tipoOperazione);
+  }
+
+  getTipoOperazioneViaggio(): any {
+    return this.gestioneViaggio.getValue();
+  }
+
+  // Metodo per aggiornare il viaggio
+  setViaggio(viaggio: any): void {
+    this.viaggioSubject.next(viaggio);
+  }
+
+  // Metodo per ottenere il viaggio corrente
+  getViaggio(): any {
+    return this.viaggioSubject.getValue();
+  }
+
+  // Metodo per cambiare quali viaggi guardare
+  setShowViaggiRichiamtiDa(tipoUtente: string) {
+    this.showViaggiRichiamatiDa.next(tipoUtente); // Cambia il valore attuale
+  }
+
+  getShowViaggiRichiamatiDa() {
+    return this.showViaggiRichiamatiDa.getValue();
   }
 
   // Metodo per cambiare la parola chiave della pagina attuale

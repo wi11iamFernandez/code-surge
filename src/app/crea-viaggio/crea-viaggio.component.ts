@@ -13,6 +13,7 @@ import { RouterLink, RouterLinkActive } from '@angular/router';
 import { LoadingSpinnerComponent } from '../loading-spinner/loading-spinner.component';
 import { ApiService } from '../services/api.service';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { ToggleService } from '../services/toggle.service';
 
 @Component({
   selector: 'app-crea-viaggio',
@@ -35,8 +36,9 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 })
 export class CreaViaggioComponent {
   viaggioForm: FormGroup;
+  title: string = 'Crea un viaggio';
 
-  constructor(private fb: FormBuilder, private apiService: ApiService, private snackBar: MatSnackBar) {
+  constructor(private fb: FormBuilder, private apiService: ApiService, private snackBar: MatSnackBar, private toggleService: ToggleService) {
     this.viaggioForm = this.fb.group({
       nome: ['', Validators.required],
       descrizione: [''],
@@ -51,6 +53,26 @@ export class CreaViaggioComponent {
       approvato: [false],
       confermato: [false]
     });
+  }
+
+  ngOnInit(): void {
+    const listaVisualizzataDa = this.toggleService.getShowViaggiRichiamatiDa();
+    const tipoOperazione = this.toggleService.getTipoOperazioneViaggio();
+
+    if (listaVisualizzataDa === 'all') {
+      this.title = 'Crea un viaggio';
+    } else if (listaVisualizzataDa === 'me') {
+      this.title = 'Modifica il viaggio';
+    }
+
+    if (tipoOperazione === 'crea-viaggio') {
+      this.viaggioForm.reset();
+    }
+    else if (tipoOperazione === 'miei-viaggi') {
+      const viaggio = this.toggleService.getViaggio();
+      this.viaggioForm.patchValue(viaggio);
+    }
+
   }
 
   // Funzione per gestire il salvataggio del viaggio

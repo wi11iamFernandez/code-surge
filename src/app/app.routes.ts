@@ -13,7 +13,6 @@ export const routes: Routes = [
     { path: 'login-component', component: LoginFormComponent },
     { path: 'register-form', component: RegisterFormComponent },
     { path: 'crea-viaggio', component: CreaViaggioComponent },
-    { path: 'crea-viaggio', component: CreaViaggioComponent },
     { path: 'viaggi-utente', component: ViaggiUtenteComponent },
     { path: '**', redirectTo: '' }
 ];

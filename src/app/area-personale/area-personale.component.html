@@ -2,7 +2,21 @@
   <div
     class="container-area-personale d-flex justify-content-around align-items-center p-3"
   >
-    <div class="row row-cols-1 row-cols-md-2 mb-3 text-center">
+    <div class="row row-cols-1 row-cols-md-3 mb-3 text-center">
+      <div class="col">
+        <div
+          class="card mb-4 rounded-3 shadow-sm card-img anim-card sfondo-mie-iscrizioni"
+          [routerLink]="['/crea-viaggio']"
+          routerLinkActive="active"
+          (click)="onCreaViaggio()"
+        >
+          <div
+            class="card-body dimension-card d-flex justify-content-center align-items-center"
+          >
+            <h4 class="fs-3 fw-bold text-white">Le mie iscrizioni</h4>
+          </div>
+        </div>
+      </div>
       <div class="col">
         <div
           class="card mb-4 rounded-3 shadow-sm card-img anim-card sfondo-tuoi-viaggi"
@@ -10,8 +24,10 @@
           routerLinkActive="active"
           (click)="onAreaViaggiUtente()"
         >
-          <div class="card-body dimension-card">
-            <h4>I tuoi viaggi</h4>
+          <div
+            class="card-body dimension-card d-flex justify-content-center align-items-center"
+          >
+            <h4 class="fs-3 fw-bold text-white">Viaggi creati</h4>
           </div>
         </div>
       </div>
@@ -20,9 +36,12 @@
           class="card mb-4 rounded-3 shadow-sm card-img anim-card sfondo-crea-viaggio"
           [routerLink]="['/crea-viaggio']"
           routerLinkActive="active"
+          (click)="onCreaViaggio()"
         >
-          <div class="card-body dimension-card">
-            <h4>Crea un viaggio</h4>
+          <div
+            class="card-body dimension-card d-flex justify-content-center align-items-center"
+          >
+            <h4 class="fs-3 fw-bold text-white">Crea un viaggio</h4>
           </div>
         </div>
       </div>
