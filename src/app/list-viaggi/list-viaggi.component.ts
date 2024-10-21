@@ -64,8 +64,8 @@ export class ListViaggiComponent {
     });
   }
 
-  aggiornaViaggi(data: any) {
-    this.viaggi = data;
+  onModificaViaggio(viaggioId: number) {
+
   }
 
 }

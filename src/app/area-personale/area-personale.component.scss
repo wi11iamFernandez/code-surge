@@ -1,14 +1,33 @@
 .container-fluid {
-  background-image: url("/images/sfondo-area-personale.jpg"); // Sostituisci con il percorso della tua immagine
-  background-size: cover; // Copre l'intero container
-  background-position: center; // Centra l'immagine
+  //background-image: url("/images/sfondo-area-personale.jpg"); // Sostituisci con il percorso della tua immagine
+  //background-size: cover; // Copre l'intero container
+  //background-position: center; // Centra l'immagine
   padding: 0; // Padding interno del container
 
   .container-area-personale {
     height: 80vh; // Imposta l'altezza del container
+    background: rgb(174, 238, 228);
+    background: radial-gradient(
+      circle,
+      rgba(174, 238, 228, 1) 35%,
+      rgba(174, 238, 228, 1) 43%,
+      rgba(148, 187, 233, 1) 74%
+    );
 
     .anim-card {
       cursor: pointer;
+
+      &.sfondo-tuoi-viaggi {
+        background-image: url("/images/tuoi-viaggi.jpg"); // Sostituisci con il percorso della tua immagine
+        background-size: cover; // Copre l'intero container
+        background-position: center; // Centra l'immagine
+      }
+
+      &.sfondo-crea-viaggio {
+        background-image: url("/images/crea-viaggio.jpg"); // Sostituisci con il percorso della tua immagine
+        background-size: cover; // Copre l'intero container
+        background-position: center; // Centra l'immagine
+      }
 
       .dimension-card {
         width: 15em;
