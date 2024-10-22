@@ -6,6 +6,7 @@ import { FormsModule } from '@angular/forms';
 import { ApiService } from '../../services/api.service';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { AuthService } from '../../services/auth.service';
+import { ToggleService } from '../../services/toggle.service';
 
 @Component({
   selector: 'app-my-dialog',
@@ -15,8 +16,15 @@ import { AuthService } from '../../services/auth.service';
   styleUrl: './my-dialog.component.scss'
 })
 export class MyDialogComponent {
+
+  tipoOperazione: any;
+
   constructor(private dialogRef: MatDialogRef<MyDialogComponent>,
-    @Inject(MAT_DIALOG_DATA) public data: any, private apiService: ApiService, private snackBar: MatSnackBar, private authService: AuthService) { }
+    @Inject(MAT_DIALOG_DATA) public data: any, private apiService: ApiService, private snackBar: MatSnackBar, private authService: AuthService, private toggleService: ToggleService) { }
+
+  ngOnInit(): void {
+    this.tipoOperazione = this.toggleService.getTipoOperazioneViaggio();
+  }
 
   prenota() {
     const bExistToken = !!this.authService.getToken();

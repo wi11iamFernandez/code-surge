@@ -2,13 +2,9 @@
   <app-header-global-app></app-header-global-app>
 
   <div class="py-4 main-contenitore vh-100">
-    <div class="mt-4 centra-contenuto">
+    <div class="mt-4 centra-contenuto d-flex justify-content-center align-items-center">
       <mat-card class="login-card">
-        <mat-card-header>
-          <mat-card-title>Login</mat-card-title>
-        </mat-card-header>
-
-        <mat-card-content>
+        <mat-card-content class="">
           <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
             <!-- Username -->
             <mat-form-field appearance="outline" class="full-width">
