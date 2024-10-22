@@ -1,10 +1,11 @@
 .container {
-  background: linear-gradient(#eddece, #02202d);
+  
 
   .register-card {
-    background-image: url("/images/boke-register.jpg"); // Sostituisci con il percorso della tua immagine
+    /*background-image: url("/images/boke-register.jpg"); // Sostituisci con il percorso della tua immagine
     background-size: cover; // Copre l'intero container
     background-position: center; // Centra l'immagine
+    */
     margin-top: 3em;
 
     .row {
@@ -17,7 +18,7 @@
         button {
           width: 15%;
           margin-bottom: 2em;
-          color: #09a58e;
+          
         }
       }
     }

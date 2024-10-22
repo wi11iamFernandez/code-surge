@@ -7,7 +7,7 @@ import { MatCardModule } from '@angular/material/card';
 import { MatIconModule } from '@angular/material/icon';
 import { MatInputModule } from '@angular/material/input';
 import { MatSelectModule } from '@angular/material/select';
-import { Router } from '@angular/router';
+import { Router, RouterLink, RouterLinkActive } from '@angular/router';
 import { LoadingSpinnerComponent } from '../loading-spinner/loading-spinner.component';
 import { ToggleService } from '../services/toggle.service';
 import { HeaderGlobalAppComponent } from '../header-global-app/header-global-app.component';
@@ -25,7 +25,9 @@ import { ApiService } from '../services/api.service';
     ReactiveFormsModule,
     MatIconModule,
     LoadingSpinnerComponent,
-    HeaderGlobalAppComponent
+    HeaderGlobalAppComponent,
+    RouterLink,
+    RouterLinkActive
   ],
   templateUrl: './register-form.component.html',
   styleUrl: './register-form.component.scss'

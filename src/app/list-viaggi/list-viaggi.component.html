@@ -54,7 +54,7 @@
                 </mat-card-actions>
               </div>
             </div>
-            <div *ngIf="utente === 'me'" [ngClass]="tipoOperazione === 'miei-viaggi-creati' ? 'col-6' : 'col-12'">
+            <div *ngIf="tipoOperazione === 'mie-iscrizioni'" [ngClass]="tipoOperazione === 'mie-iscrizioni' ? 'col-6' : 'col-12'">
               <div class="d-flex justify-content-center">
                 <mat-card-actions>
                   <button
@@ -69,7 +69,7 @@
                 </mat-card-actions>
               </div>
             </div>
-            <div *ngIf="tipoOperazione === 'miei-viaggi-creati'" [ngClass]="tipoOperazione === 'miei-viaggi-creati' ? 'col-6' : 'col-12'">
+            <div *ngIf="tipoOperazione === 'miei-viaggi-creati'" [ngClass]="tipoOperazione === 'mie-iscrizioni' ? 'col-6' : 'col-12'">
               <div class="d-flex justify-content-center">
                 <mat-card-actions>
                   <button

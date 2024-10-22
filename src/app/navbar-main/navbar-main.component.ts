@@ -5,6 +5,7 @@ import { ToggleService } from '../services/toggle.service';
 import { RouterOutlet, RouterLink, RouterLinkActive } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { AuthService } from '../services/auth.service';
+import { ApiService } from '../services/api.service';
 
 @Component({
   selector: 'app-navbar-main',
@@ -17,7 +18,7 @@ export class NavbarMainComponent {
   selectedButton: string = '';
   private isVisibleAreaPersonal: boolean = false;
 
-  constructor(private toggleService: ToggleService) { }
+  constructor(private toggleService: ToggleService, private apiService: ApiService) { }
 
   onToggleDescription(buttonName: string) {
     this.selectedButton = buttonName;
@@ -26,6 +27,15 @@ export class NavbarMainComponent {
     if (buttonName === 'desc-viaggi') {
       this.toggleService.setShowViaggiRichiamtiDa('all');
       this.toggleService.setTipoOperazioneViaggio('all');
+      this.apiService.getViaggi()
+        .subscribe({
+          next: (data) => {
+            this.toggleService.setListaViaggi(data);
+          },
+          error: (err) => {
+            console.error('Errore durante il caricamento dei viaggi:', err);
+          }
+        });
     }
   }
 
