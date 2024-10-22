@@ -101,9 +101,9 @@ export class ListViaggiComponent {
         next: (response: any) => {
           this.viaggi = response;
           if (response.length === 0) {
-            this.viaggi = response;
-            this.showSuccess('Viaggio eliminato con successo!');
+            this.router.navigate(['/home-detail']);
           }
+          this.showSuccess('Viaggio eliminato con successo!');
         },
 
         error: (error) => {
