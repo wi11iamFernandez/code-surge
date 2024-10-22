@@ -9,7 +9,7 @@ import { MatDialogRef } from '@angular/material/dialog';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { HeaderGlobalAppComponent } from '../header-global-app/header-global-app.component';
-import { RouterLink, RouterLinkActive } from '@angular/router';
+import { Router, RouterLink, RouterLinkActive } from '@angular/router';
 import { LoadingSpinnerComponent } from '../loading-spinner/loading-spinner.component';
 import { ApiService } from '../services/api.service';
 import { MatSnackBar } from '@angular/material/snack-bar';
@@ -38,7 +38,7 @@ export class CreaViaggioComponent {
   viaggioForm: FormGroup;
   title: string = 'Crea un viaggio';
 
-  constructor(private fb: FormBuilder, private apiService: ApiService, private snackBar: MatSnackBar, private toggleService: ToggleService) {
+  constructor(private fb: FormBuilder, private apiService: ApiService, private snackBar: MatSnackBar, private toggleService: ToggleService, private router: Router) {
     this.viaggioForm = this.fb.group({
       nome: ['', Validators.required],
       descrizione: [''],
@@ -83,6 +83,19 @@ export class CreaViaggioComponent {
       this.apiService.createViaggio(viaggioData)
         .subscribe({
           next: (response) => {
+            this.router.navigate(['/viaggi-utente']);
+            this.apiService.mieiViaggiCreati()
+              .subscribe({
+                next: (response: any) => {
+                  this.toggleService.setListaViaggi(response);
+                  this.toggleService.setTipoOperazioneViaggio('miei-viaggi-creati');
+                  this.toggleService.setShowViaggiRichiamtiDa('me');
+                },
+
+                error: (error) => {
+                  console.error('Check ws viaggi me');
+                }
+              });
             this.showSuccess();
           },
           error: (error) => {

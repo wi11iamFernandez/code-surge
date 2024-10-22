@@ -35,12 +35,26 @@ export class AreaPersonaleComponent {
 
   onCreaViaggio() {
     this.toggleService.setShowViaggiRichiamtiDa('me')
-    this.toggleService.setTipoOperazioneViaggio('crea-viaggio');
+    this.toggleService.setTipoOperazioneViaggio('miei-viaggi-creati');
   }
 
   onMieIscrizioni() {
     this.toggleService.setShowViaggiRichiamtiDa('me')
     this.toggleService.setTipoOperazioneViaggio('mie-iscrizioni');
+
+    this.apiService.mieiViaggiIscritti()
+      .subscribe({
+        next: (response) => {
+          if (response.length !== 0) {
+            this.router.navigate(['/mie-iscrizioni']);
+          } else {
+            this.showError('Non sei ancora iscritto ad un viaggio!');
+          }
+        },
+        error: (error) => {
+          this.showError('Errore nella creazione del viaggio.');
+        }
+      });
   }
 
   showSuccess(message: string) {

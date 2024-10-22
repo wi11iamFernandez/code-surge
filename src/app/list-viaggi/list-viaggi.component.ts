@@ -33,11 +33,6 @@ export class ListViaggiComponent {
     this.utente = this.toggleService.getShowViaggiRichiamatiDa();
     this.tipoOperazione = this.toggleService.getTipoOperazioneViaggio();
 
-    // Sottoscrivi la lista dei viaggi
-    this.toggleService.listaViaggi$.subscribe((viaggi: any[]) => {
-      this.viaggi = [];
-    });
-
     if (this.utente === 'all') {
       this.apiService.getViaggi()
         .subscribe({
@@ -82,12 +77,6 @@ export class ListViaggiComponent {
           });
       }
     }
-
-    // Richiama i viaggi dal servizio
-    // Abbonati ai cambiamenti dei viaggi
-    this.viaggiService.viaggi$.subscribe((data) => {
-      this.viaggi = data; // Aggiorna la lista di viaggi
-    });
   }
 
   onMoreInfo(viaggioId: number) {
