@@ -4,6 +4,7 @@ import { HomePageComponent } from './home-page/home-page.component';
 import { RegisterFormComponent } from './register-form/register-form.component';
 import { CreaViaggioComponent } from './crea-viaggio/crea-viaggio.component';
 import { ViaggiUtenteComponent } from './viaggi-utente/viaggi-utente.component';
+import { MieIscrizioniComponent } from './mie-iscrizioni/mie-iscrizioni.component';
 
 export const routes: Routes = [
     { path: '', component: HomePageComponent },       // Route per la homepage
@@ -14,5 +15,6 @@ export const routes: Routes = [
     { path: 'register-form', component: RegisterFormComponent },
     { path: 'crea-viaggio', component: CreaViaggioComponent },
     { path: 'viaggi-utente', component: ViaggiUtenteComponent },
+    { path: 'mie-iscrizioni', component: MieIscrizioniComponent },
     { path: '**', redirectTo: '' }
 ];

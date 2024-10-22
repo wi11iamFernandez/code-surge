@@ -23,16 +23,19 @@ export class ListViaggiComponent {
 
   utente: any = 'all';
 
+  tipoOperazione: any = 'all';
+
   constructor(private viaggiService: ViaggiService, private dialog: MatDialog, private toggleService: ToggleService, private apiService: ApiService,
     private snackBar: MatSnackBar, private router: Router
   ) { }
 
   ngOnInit(): void {
     this.utente = this.toggleService.getShowViaggiRichiamatiDa();
+    this.tipoOperazione = this.toggleService.getTipoOperazioneViaggio();
 
     // Sottoscrivi la lista dei viaggi
     this.toggleService.listaViaggi$.subscribe((viaggi: any[]) => {
-      this.viaggi = viaggi;
+      this.viaggi = [];
     });
 
     if (this.utente === 'all') {
@@ -47,20 +50,37 @@ export class ListViaggiComponent {
           }
         });
     } else if (this.utente === 'me') {
-      this.apiService.mieiViaggi()
-        .subscribe({
-          next: (response: any) => {
-            this.viaggi = response;
-            if (response.length === 0) {
-              this.showSuccess('Non ci sono viaggi');
-              this.router.navigate(['/home-detail']);
-            }
-          },
+      if (this.tipoOperazione === 'miei-viaggi-creati') {
+        this.apiService.mieiViaggiCreati()
+          .subscribe({
+            next: (response: any) => {
+              this.viaggi = response;
+              if (response.length === 0) {
+                this.showSuccess('Non ci sono viaggi');
+              }
+            },
 
-          error: (error) => {
-            console.error('Check ws viaggi me');
-          }
-        });
+            error: (error) => {
+              console.error('Check ws viaggi me');
+            }
+          });
+
+      } else if (this.tipoOperazione === 'mie-iscrizioni') {
+        this.apiService.mieiViaggiIscritti()
+          .subscribe({
+            next: (response: any) => {
+              this.viaggi = response;
+              if (response.length === 0) {
+                this.showSuccess('Non ci sono viaggi');
+                //this.router.navigate(['/home-detail']);
+              }
+            },
+
+            error: (error) => {
+              console.error('Check ws viaggi me');
+            }
+          });
+      }
     }
 
     // Richiama i viaggi dal servizio
@@ -81,6 +101,26 @@ export class ListViaggiComponent {
     const viaggio = this.viaggi.find((element) => element.id_viaggio === viaggioId);
     this.toggleService.setViaggio(viaggio); // Imposta il viaggio corrente
     this.toggleService.setTipoOperazioneViaggio('miei-viaggi');
+  }
+
+  onEliminaViaggio(viaggioId: number) {
+    //const viaggio = this.viaggi.find((element) => element.id_viaggio === viaggioId);
+    //this.toggleService.setViaggio(viaggio); // Imposta il viaggio corrente
+    //this.toggleService.setTipoOperazioneViaggio('miei-viaggi');
+    this.apiService.cancellaViaggioCreato(viaggioId)
+      .subscribe({
+        next: (response: any) => {
+          this.viaggi = response;
+          if (response.length === 0) {
+            this.viaggi = response;
+            this.showSuccess('Viaggio eliminato con successo!');
+          }
+        },
+
+        error: (error) => {
+          console.error('Errore nella cancellazione del viaggio');
+        }
+      });
   }
 
   showSuccess(message: string) {

@@ -25,6 +25,7 @@ export class NavbarMainComponent {
 
     if (buttonName === 'desc-viaggi') {
       this.toggleService.setShowViaggiRichiamtiDa('all');
+      this.toggleService.setTipoOperazioneViaggio('all');
     }
   }
 

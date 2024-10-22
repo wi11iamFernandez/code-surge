@@ -73,7 +73,7 @@ export class ApiService {
     this.loadingService.show();
     const token = this.authService.getToken();
     const headers = new HttpHeaders().set('Authorization', `Bearer ${token}`);
-    return this.http.get(`${this.baseUrl}/api/iscrizione/viaggio/${idViaggio}`, { headers }).pipe(
+    return this.http.post(`${this.baseUrl}/api/iscrizione/create/viaggio/${idViaggio}`, {},  { headers }).pipe(
       finalize(() => this.loadingService.hide())  // Nascondi il caricamento quando l'operazione è completata
     );
   }
@@ -87,11 +87,29 @@ export class ApiService {
     );
   }
 
-  mieiViaggi(): Observable<any> {
+  mieiViaggiIscritti(): Observable<any> {
+    this.loadingService.show();
+    const token = this.authService.getToken();
+    const headers = new HttpHeaders().set('Authorization', `Bearer ${token}`);
+    return this.http.get(`${this.baseUrl}/api/iscrizione/me`, { headers }).pipe(
+      finalize(() => this.loadingService.hide())  // Nascondi il caricamento quando l'operazione è completata
+    );
+  }
+
+  mieiViaggiCreati(): Observable<any> {
     this.loadingService.show();
     const token = this.authService.getToken();
     const headers = new HttpHeaders().set('Authorization', `Bearer ${token}`);
     return this.http.get(`${this.baseUrl}/api/viaggio/me`, { headers }).pipe(
+      finalize(() => this.loadingService.hide())  // Nascondi il caricamento quando l'operazione è completata
+    );
+  }
+
+  cancellaViaggioCreato(idViaggio: any): Observable<any> {
+    this.loadingService.show();
+    const token = this.authService.getToken();
+    const headers = new HttpHeaders().set('Authorization', `Bearer ${token}`);
+    return this.http.post(`${this.baseUrl}/api/viaggio/remove/${idViaggio}`, {}, { headers }).pipe(
       finalize(() => this.loadingService.hide())  // Nascondi il caricamento quando l'operazione è completata
     );
   }
