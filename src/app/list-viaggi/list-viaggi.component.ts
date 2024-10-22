@@ -92,6 +92,27 @@ export class ListViaggiComponent {
     this.toggleService.setTipoOperazioneViaggio('miei-viaggi');
   }
 
+  onAnnullaIscrizione(viaggioId: number) {
+    //const viaggio = this.viaggi.find((element) => element.id_viaggio === viaggioId);
+    //this.toggleService.setViaggio(viaggio); // Imposta il viaggio corrente
+    //this.toggleService.setTipoOperazioneViaggio('miei-viaggi');
+
+    this.apiService.annullaIscrizione(viaggioId)
+    .subscribe({
+      next: (response: any) => {
+        this.viaggi = response;
+        if (response.length === 0) {
+          this.router.navigate(['/home-detail']);
+        }
+        this.showSuccess('Iscrizione annullata!');
+      },
+
+      error: (error) => {
+        console.error("Errore nel annullamento del iscrizione del viaggio");
+      }
+    });
+  }
+
   onEliminaViaggio(viaggioId: number) {
     //const viaggio = this.viaggi.find((element) => element.id_viaggio === viaggioId);
     //this.toggleService.setViaggio(viaggio); // Imposta il viaggio corrente
