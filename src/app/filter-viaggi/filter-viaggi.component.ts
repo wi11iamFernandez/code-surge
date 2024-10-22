@@ -48,6 +48,7 @@ export class FilterViaggiComponent {
       },
       error: (err) => {
         console.error('Errore durante il caricamento dei viaggi:', err);
+        this.toggleService.setListaViaggi([]);
       }
     });
   }
