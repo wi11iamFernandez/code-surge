@@ -22,6 +22,7 @@ export class AreaPersonaleComponent {
       .subscribe({
         next: (response) => {
           if (response.length !== 0) {
+            this.toggleService.setListaViaggi(response);
             this.router.navigate(['/viaggi-utente']);
           } else {
             this.showError('Non hai creato nessun viaggio!');
@@ -46,6 +47,7 @@ export class AreaPersonaleComponent {
       .subscribe({
         next: (response) => {
           if (response.length !== 0) {
+            this.toggleService.setListaViaggi(response);
             this.router.navigate(['/mie-iscrizioni']);
           } else {
             this.showError('Non sei ancora iscritto ad un viaggio!');

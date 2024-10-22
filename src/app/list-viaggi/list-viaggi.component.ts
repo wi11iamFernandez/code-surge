@@ -33,6 +33,11 @@ export class ListViaggiComponent {
     this.utente = this.toggleService.getShowViaggiRichiamatiDa();
     this.tipoOperazione = this.toggleService.getTipoOperazioneViaggio();
 
+    this.toggleService.listaViaggi$.subscribe((viaggi) => {
+      this.viaggi = viaggi; // Aggiorna la lista di viaggi nel componente
+    });
+
+    /*
     if (this.utente === 'all') {
       this.apiService.getViaggi()
         .subscribe({
@@ -76,7 +81,8 @@ export class ListViaggiComponent {
             }
           });
       }
-    }
+          */
+    
   }
 
   onMoreInfo(viaggioId: number) {

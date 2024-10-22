@@ -8,6 +8,7 @@ import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatNativeDateModule } from '@angular/material/core';
 import { ApiService } from '../services/api.service';
 import { ViaggiService } from '../services/viaggi.service';
+import { ToggleService } from '../services/toggle.service';
 
 @Component({
   selector: 'app-filter-viaggi',
@@ -21,7 +22,7 @@ export class FilterViaggiComponent {
   filterForm: FormGroup;
   datePipe = new DatePipe("en-US");
 
-  constructor(private fb: FormBuilder, private apiService: ApiService, private viaggiService: ViaggiService) {
+  constructor(private fb: FormBuilder, private apiService: ApiService, private viaggiService: ViaggiService, private toggleService: ToggleService) {
     this.filterForm = this.fb.group({
       nazione: [''],
       area: [''],
@@ -43,6 +44,7 @@ export class FilterViaggiComponent {
     this.apiService.getViaggiFilter(filters).subscribe({
       next: (data) => {
         this.viaggiService.setViaggi(data);
+        this.toggleService.setListaViaggi(data);
       },
       error: (err) => {
         console.error('Errore durante il caricamento dei viaggi:', err);

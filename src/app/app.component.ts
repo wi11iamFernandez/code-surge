@@ -28,6 +28,7 @@ export class AppComponent {
     this.apiService.getViaggi().subscribe({
       next: (data) => {
         this.viaggiService.setViaggi(data);
+        this.toggleService.setListaViaggi(data);
       },
       error: (err) => {
         console.error('Errore durante il caricamento dei viaggi:', err);

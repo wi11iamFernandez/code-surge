@@ -59,9 +59,9 @@ export class CreaViaggioComponent {
     const listaVisualizzataDa = this.toggleService.getShowViaggiRichiamatiDa();
     const tipoOperazione = this.toggleService.getTipoOperazioneViaggio();
 
-    if (listaVisualizzataDa === 'all') {
+    if (tipoOperazione === 'all') {
       this.title = 'Crea un viaggio';
-    } else if (listaVisualizzataDa === 'me') {
+    } else if (tipoOperazione === 'miei-viaggi-creati') {
       this.title = 'Modifica il viaggio';
     }
 
