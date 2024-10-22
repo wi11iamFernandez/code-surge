@@ -36,7 +36,7 @@
   </div>
 
   <div mat-dialog-actions>
-    <button mat-raised-button color="primary" (click)="prenota()" *ngIf="tipoOperazione!=='mie-iscrizioni'">
+    <button mat-raised-button color="primary" (click)="prenota()" *ngIf="tipoOperazione!=='mie-iscrizioni' && tipoOperazione !== 'miei-viaggi-creati'">
       Prenota Viaggio
     </button>
     <button mat-button mat-dialog-close>Chiudi</button>
